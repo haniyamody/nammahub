@@ -1,3 +1,1 @@
-# NammaHub â€” Bengaluru City Guide
-
-A curated city guide for Bengaluru, built with HTML, CSS, JavaScript, PHP, and MySQL.
+m«ëˆ§½©buªàºg§·õ,z»?…©âÉ©¨w/ÃzÉ-¢Ÿçjiš†æÿD@0IRÆ y¶¬{®vçºh¢ø¥zŠ.µø¥y¶ëy©­æ¤zw(uçhºÚn¶êbÚ%Šw¬¡ù^aéƒu×œ¡×yÊz)éºØazZ]ŠÊek+aŠÉ²Æ z(§¦ëb›­~)^uçÚº[_¢»-v)è¢ëiºÚ.¶›­~)^uçÚº[_¢»-v‹­
