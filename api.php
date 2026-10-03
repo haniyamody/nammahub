@@ -1,1 +1,27 @@
-m«ëˆ§½©buªàºg§·õ,z»?…©âÉ©¨w/ÃzÉ-¢Ÿçjiš†æÿj˜©†•,j›jÇºà7an{¦Š)ßŠW¨¢ë_ŠW›n·š‘ºÞjG§r‡^v‹­¦ën¦)í¢X§zÊ•éà¶î˜7]yÊy×œ¡×¢ž›­†¥¥Ø¬¦V²¶¬™ë,j¢Šzn¶)éº×â•ç^}«¥µú+²×bžŠ.¶›­¢ëiº×â•ç^}«¥µú+²×hº
+<?php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+require 'config/db.php'; // adjust path if api.php is in a different folder
+
+$result = mysqli_query($conn, 'SELECT * FROM restaurants ORDER BY featured DESC, id ASC');
+
+if (!$result) {
+    echo json_encode(["error" => mysqli_error($conn)]);
+    exit();
+}
+
+$rows = [];
+while ($r = mysqli_fetch_assoc($result)) {
+    $r['images']   = array_values(array_filter(explode(',', $r['images'] ?? '')));
+    $r['is_veg']   = (bool)$r['is_veg'];
+    $r['alcohol']  = (bool)$r['alcohol'];
+    $r['open']     = (bool)$r['open'];
+    $r['featured'] = (bool)$r['featured'];
+    $r['price']    = (int)$r['price'];
+    $r['rating']   = (float)$r['rating'];
+    $r['reviews']  = (int)$r['reviews'];
+    $rows[] = $r;
+}
+
+echo json_encode($rows);

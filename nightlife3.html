@@ -1,1 +1,801 @@
-m´ÎàßΩ©bu™‡∫gß∑ı,zª?Ö©‚…©®w/√z…-¢üÁjiöÜÊˇû(!∂Xü{xmöU,jõj«∫‡7an{¶ä)ﬂäW®¢Î_äWõn∑öë∫ﬁjGßrá^vã≠¶În¶)Ì¢Xßz ïÈ‡∂Óò7]y y◊ú°◊¢ûõ≠Ü••ÿ¨¶V≤∂¨ôÎ,j¢äzn∂)È∫◊‚ïÁ^}´•µ˙+≤◊bûä.∂õ≠¢Îi∫◊‚ïÁ^}´•µ˙+≤◊h∫
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nightlife ‚Äî Namma Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@200;300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#07060a; --bg2:#0c0b10; --bg3:#100f15;
+  --rose:#b48fbe; --champ:#8a9a6e; --blush:#5c5265;
+  --cream:#f0ebe3; --dim:rgba(240,235,227,.45); --dimmer:rgba(240,235,227,.22);
+  --border:rgba(240,235,227,.08);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+#cur{position:fixed;width:6px;height:6px;background:var(--rose);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cur-r{position:fixed;width:32px;height:32px;border:1px solid rgba(180,143,190,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .3s ease;}
+
+nav{position:fixed;inset:0 0 auto;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4rem;background:linear-gradient(to bottom,rgba(7,6,10,.85) 0%,transparent 100%);}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;letter-spacing:.04em;color:var(--cream);text-decoration:none;}
+.logo span{color:var(--rose);font-style:italic;}
+.nav-links{display:flex;gap:2.8rem;list-style:none;}
+.nav-links a{font-family:'Outfit',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,227,.55);text-decoration:none;transition:color .3s;}
+.nav-links a:hover,.nav-links a.on{color:var(--cream);}
+.nav-res{font-family:'Outfit',sans-serif;font-weight:500;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--rose);padding:.6rem 1.5rem;text-decoration:none;border-radius:100px;transition:background .3s,transform .2s;}
+.nav-res:hover{background:var(--champ);transform:translateY(-1px);}
+
+/* ‚îÄ‚îÄ HERO FIX ‚îÄ‚îÄ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:600px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;        /* vertically centered */
+  padding:0 4rem;
+}
+.hvw{position:absolute;inset:0;z-index:0;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 40%, rgba(120,60,160,.45) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 65% 75%, rgba(180,100,80,.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 90% 10%, rgba(60,40,120,.35) 0%, transparent 60%),
+    linear-gradient(135deg, #07060a 0%, #120d1a 40%, #1a0f22 65%, #0e0a14 100%);
+}
+.hvw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);z-index:0;}
+.hvw video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);z-index:1;}
+.hvw::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(to right,rgba(7,6,10,.92) 0%,rgba(7,6,10,.6) 45%,rgba(7,6,10,.15) 100%),linear-gradient(to top,rgba(7,6,10,1) 0%,transparent 60%);}
+.grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.3;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:3;}
+.orb.a{width:600px;height:600px;background:rgba(140,80,180,.18);top:-80px;right:5%;animation:f1 16s ease-in-out infinite;}
+.orb.b{width:420px;height:420px;background:rgba(180,100,80,.12);bottom:10%;right:22%;animation:f2 20s ease-in-out infinite;}
+.orb.c{width:350px;height:350px;background:rgba(80,50,140,.15);top:30%;right:45%;animation:f1 22s ease-in-out infinite reverse;}
+@keyframes f1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,25px)}}
+@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,-30px)}}
+canvas#cv{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;}
+.hc{position:relative;z-index:5;max-width:720px;padding-top:80px;} /* offset for fixed nav */
+.eyebrow{font-family:'Outfit',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin-bottom:1.8rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:up .9s .1s ease both;}
+.eyebrow::before{content:'';width:28px;height:1px;background:currentColor;}
+.htitle{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,8vw,7.5rem);line-height:.92;letter-spacing:-.02em;color:var(--cream);opacity:0;animation:up 1s .2s ease both;font-weight:900;}
+.htitle .it{font-style:italic;font-weight:400;color:rgba(240,235,227,.35);}
+.htitle .ac{color:var(--rose);}
+.hsub{font-family:'Outfit',sans-serif;font-style:normal;font-size:clamp(1rem,1.6vw,1.15rem);font-weight:400;color:rgba(240,235,227,.78);line-height:1.75;margin-top:1.4rem;max-width:480px;opacity:0;animation:up .9s .35s ease both;}
+.hbtns{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:up .9s .5s ease both;}
+.btn-r{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--rose);padding:1rem 2.2rem;text-decoration:none;border-radius:100px;transition:background .3s,transform .2s;}
+.btn-r:hover{background:var(--champ);transform:translateY(-2px);}
+.btn-g{font-family:'Outfit',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);background:transparent;padding:1rem 2.2rem;text-decoration:none;border:1px solid rgba(240,235,227,.2);border-radius:100px;transition:border-color .3s,color .3s,transform .2s;}
+.btn-g:hover{border-color:rgba(180,143,190,.5);color:var(--rose);transform:translateY(-2px);}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.scrl{position:absolute;bottom:2.5rem;right:4rem;z-index:5;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:.35;}
+.scrl span{font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;writing-mode:vertical-rl;}
+.scrl-l{width:1px;height:50px;background:linear-gradient(to bottom,var(--rose),transparent);animation:sp 2s ease-in-out infinite;}
+@keyframes sp{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+
+.ticker{overflow:hidden;background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.65rem 0;}
+.ti{display:flex;white-space:nowrap;animation:tm 30s linear infinite;}
+.titem{flex-shrink:0;display:inline-flex;align-items:center;gap:2rem;padding:0 2rem;font-family:'Outfit',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,227,.5);}
+.titem .dot{color:var(--rose);font-size:.5rem;}
+@keyframes tm{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.reel{background:var(--bg);padding:5rem 0;}
+.reel-hd{padding:0 4rem;margin-bottom:2.5rem;}
+.lbl{font-family:'Outfit',sans-serif;font-weight:500;font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin-bottom:.7rem;}
+.hdg{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.8rem);line-height:.95;letter-spacing:-.02em;color:var(--cream);font-weight:700;}
+.hdg em{font-style:italic;font-weight:400;color:var(--champ);}
+.reel-wrap{position:relative;overflow:hidden;}
+.reel-track{display:flex;gap:12px;padding:0 4rem;width:max-content;animation:rl 34s linear infinite;}
+.reel-track:hover{animation-play-state:paused;}
+@keyframes rl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rc{position:relative;flex-shrink:0;width:280px;height:380px;overflow:hidden;border-radius:2px;}
+.rc img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.7);transition:transform .7s cubic-bezier(.16,1,.3,1),filter .5s;}
+.rc:hover img{transform:scale(1.09);filter:brightness(.75) saturate(1);}
+.ro{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,6,10,.9) 0%,transparent 55%);}
+/* reel card label block ‚Äî subtitle sits at fixed bottom, title above it */
+.rc-labels{position:absolute;bottom:1.1rem;left:1.2rem;right:1.2rem;display:flex;flex-direction:column;gap:.3rem;}
+.rl{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:#fff;line-height:1.2;}
+.rs{font-family:'Outfit',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);}
+.reel-wrap::before,.reel-wrap::after{content:'';position:absolute;top:0;bottom:0;z-index:2;width:100px;pointer-events:none;}
+.reel-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.reel-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+
+/* mosaic removed */
+
+/* ‚îÄ‚îÄ VENUES ‚îÄ‚îÄ */
+.venues{background:var(--bg);padding:5rem 4rem;}
+.vh{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3.5rem;}
+
+/* ‚îÄ‚îÄ CATEGORY PILLS ‚îÄ‚îÄ */
+.pills{display:flex;gap:.5rem;flex-wrap:wrap;}
+.pill{
+  font-family:'Outfit',sans-serif;font-weight:500;font-size:.78rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:.55rem 1.3rem;border:1px solid var(--border);
+  color:rgba(240,235,227,.55);background:transparent;
+  cursor:none;border-radius:100px;transition:all .25s;
+}
+.pill:hover,.pill.on{border-color:var(--rose);color:var(--rose);background:rgba(180,143,190,.08);}
+
+/* venue list + filter animation */
+.vlist{display:flex;flex-direction:column;}
+.vrow{
+  display:grid;grid-template-columns:80px 1fr 190px 190px;
+  align-items:center;gap:2rem;padding:2.2rem 0;
+  border-bottom:1px solid var(--border);position:relative;
+  transition:opacity .35s ease, transform .35s ease, max-height .4s ease;
+  overflow:hidden;
+}
+.vrow.hidden{opacity:0;pointer-events:none;max-height:0;padding:0;border:none;transform:translateY(-8px);}
+.vrow.visible{opacity:1;max-height:300px;transform:translateY(0);}
+.vrow::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--rose);transition:width .5s ease;}
+.vrow:hover::after{width:100%;}
+.vthumb{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0;}
+.vthumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.8);transition:filter .3s;}
+.vrow:hover .vthumb img{filter:brightness(.95) saturate(1);}
+.vname{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;letter-spacing:-.01em;color:var(--cream);margin-bottom:.35rem;}
+.vmeta{font-family:'Outfit',sans-serif;font-weight:400;font-size:.82rem;letter-spacing:.04em;color:rgba(240,235,227,.65);display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.vdesc{font-family:'Outfit',sans-serif;font-style:normal;font-size:.95rem;font-weight:400;color:rgba(240,235,227,.78);line-height:1.65;margin-bottom:.65rem;}
+.vtags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.vtag{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid rgba(240,235,227,.2);border-radius:100px;color:rgba(240,235,227,.65);}
+.vbadge{font-family:'Outfit',sans-serif;font-weight:600;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;padding:.28rem .85rem;border-radius:100px;border:1px solid rgba(180,143,190,.45);color:var(--rose);margin-bottom:.55rem;display:inline-block;}
+.vbadge.pub{border-color:rgba(138,154,110,.45);color:var(--champ);}
+.vbadge.club{border-color:rgba(212,128,138,.45);color:var(--blush);}
+.vbadge.lounge{border-color:rgba(150,180,232,.45);color:#a0b8e8;}
+
+/* price col */
+.vprice-col{text-align:right;}
+.vprice{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--champ);}
+.vpnote{font-family:'Outfit',sans-serif;font-weight:400;font-size:.72rem;color:rgba(240,235,227,.5);letter-spacing:.08em;margin-top:.25rem;}
+.vstars{font-family:'Outfit',sans-serif;font-weight:600;font-size:.88rem;color:var(--champ);display:flex;align-items:center;gap:.3rem;justify-content:flex-end;margin-bottom:.35rem;}
+
+/* location col ‚Äî area above, name below, maps link as button */
+.vloc-col{display:flex;flex-direction:column;align-items:flex-end;gap:.22rem;}
+.vloc-area{font-family:'Outfit',sans-serif;font-weight:400;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,235,227,.45);order:1;}
+.vloc-pin{font-family:'Outfit',sans-serif;font-weight:600;font-size:.92rem;color:var(--cream);text-decoration:none;transition:color .2s;line-height:1.2;order:2;}
+.vloc-pin:hover{color:var(--rose);}
+.maps-link{
+  order:3;
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-family:'Outfit',sans-serif;font-weight:500;font-size:.7rem;
+  letter-spacing:.06em;color:var(--rose);
+  text-decoration:none;margin-top:.2rem;
+  border:1px solid rgba(180,143,190,.35);border-radius:100px;
+  padding:.28rem .82rem;transition:all .22s;
+}
+.maps-link:hover{background:rgba(180,143,190,.1);border-color:var(--rose);}
+.maps-link svg{width:11px;height:11px;fill:currentColor;flex-shrink:0;}
+
+.qband{position:relative;overflow:hidden;height:420px;display:flex;align-items:center;justify-content:center;}
+.qbg{position:absolute;inset:-40px;background:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80') center/cover no-repeat;filter:brightness(.28) saturate(.5);}
+.qband::after{content:'';position:absolute;inset:0;background:rgba(7,6,10,.5);}
+.qi{position:relative;z-index:2;text-align:center;padding:0 4rem;max-width:900px;}
+.qt{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(1.4rem,3vw,2.4rem);color:#fff;line-height:1.5;}
+.qt em{color:var(--rose);font-style:normal;font-weight:700;}
+.qa{font-family:'Outfit',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,227,.6);margin-top:1.4rem;}
+
+.creators{background:var(--bg2);padding:5rem 4rem;}
+.creators-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.creators-left{display:flex;flex-direction:column;gap:1.2rem;}
+.creators-left p{font-family:'Outfit',sans-serif;font-style:normal;font-size:1.05rem;font-weight:400;color:rgba(240,235,227,.75);line-height:1.8;}
+.creators-left strong{font-style:normal;font-weight:600;color:var(--cream);}
+.cr-live{display:inline-flex;align-items:center;gap:.5rem;font-family:'Outfit',sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:.4rem;}
+.cr-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--rose);animation:livePulse 1.4s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(180,143,190,.6)}70%{box-shadow:0 0 0 5px rgba(180,143,190,0)}}
+.cr-stats{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid var(--border);margin-top:.5rem;}
+.cr-stat .sn{font-family:'Playfair Display',serif;font-weight:700;font-size:1.9rem;color:var(--rose);line-height:1;}
+.cr-stat .sl{font-family:'Outfit',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,235,227,.58);margin-top:.2rem;}
+
+.feat-card{position:relative;aspect-ratio:9/13;border-radius:6px;overflow:hidden;background:#000;cursor:none;max-width:320px;margin:0 auto;}
+.feat-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.75);transition:transform .7s cubic-bezier(.16,1,.3,1),filter .5s;}
+.feat-card:hover img{transform:scale(1.05);filter:brightness(.68) saturate(1);}
+.feat-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,6,10,.92) 0%,rgba(7,6,10,.08) 55%,transparent 100%);}
+.feat-top{position:absolute;top:.9rem;left:.9rem;display:flex;align-items:center;gap:.55rem;z-index:3;}
+.feat-avi{width:30px;height:30px;border-radius:50%;overflow:hidden;border:1.5px solid var(--rose);flex-shrink:0;}
+.feat-avi img{width:100%;height:100%;object-fit:cover;}
+.feat-handle{font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6);}
+.feat-bottom{position:absolute;bottom:1rem;left:1rem;right:1rem;z-index:3;}
+.feat-quote{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:1.05rem;color:#fff;line-height:1.4;margin-bottom:.5rem;text-shadow:0 1px 8px rgba(0,0,0,.5);}
+.feat-quote em{color:var(--rose);font-style:normal;}
+.feat-foot{display:flex;justify-content:space-between;align-items:center;}
+.feat-venue{font-family:'Outfit',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);}
+.feat-likes{font-family:'Outfit',sans-serif;font-weight:400;font-size:.72rem;color:rgba(240,235,227,.55);}
+.feat-play{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;}
+.feat-play-btn{width:56px;height:56px;border-radius:50%;background:rgba(180,143,190,.18);border:1.5px solid rgba(180,143,190,.55);display:flex;align-items:center;justify-content:center;transition:background .3s,transform .2s;}
+.feat-card:hover .feat-play-btn{background:rgba(180,143,190,.32);transform:scale(1.08);}
+.feat-play-btn svg{width:20px;height:20px;fill:#fff;margin-left:3px;}
+.feat-play-label{font-family:'Outfit',sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,235,227,.7);}
+.feat-content{transition:opacity .35s ease;}
+.feat-content.fading{opacity:0;}
+
+.modal-bg{position:fixed;inset:0;z-index:1000;background:rgba(5,5,7,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+.modal-bg.open{opacity:1;pointer-events:all;}
+.modal-box{position:relative;width:min(92vw,900px);background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(240,235,227,.08);border:1px solid var(--border);color:var(--cream);font-size:1.1rem;cursor:none;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.modal-close:hover{background:rgba(180,143,190,.2);}
+.modal-player{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;}
+.modal-player video{width:100%;height:100%;object-fit:cover;}
+.modal-player-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.85) 0%,transparent 60%);}
+.modal-vid-info{position:absolute;bottom:1.2rem;left:1.4rem;z-index:5;}
+.modal-vid-handle{font-family:'Outfit',sans-serif;font-weight:600;font-size:.95rem;color:#fff;margin-bottom:.2rem;}
+.modal-vid-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:rgba(240,235,227,.85);line-height:1.4;}
+.modal-vid-quote em{color:var(--rose);font-style:normal;}
+.modal-clips{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border);}
+.modal-clip{position:relative;aspect-ratio:9/11;overflow:hidden;cursor:none;background:#000;}
+.modal-clip img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.7);transition:filter .3s;}
+.modal-clip.active img,.modal-clip:hover img{filter:brightness(.75) saturate(1);}
+.modal-clip-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.88) 0%,transparent 55%);}
+.modal-clip.active::after{content:'';position:absolute;inset:0;border:2px solid var(--rose);pointer-events:none;}
+.modal-clip-info{position:absolute;bottom:.65rem;left:.7rem;right:.7rem;z-index:3;}
+.modal-clip-handle{font-family:'Outfit',sans-serif;font-weight:600;font-size:.7rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.modal-clip-venue{font-family:'Outfit',sans-serif;font-weight:400;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-top:.1rem;}
+.modal-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(240,235,227,.08);z-index:6;}
+.modal-progress-fill{height:100%;background:var(--rose);width:0%;}
+
+@media(max-width:960px){
+  .creators{padding:3.5rem 1.5rem;}
+  .creators-inner{grid-template-columns:1fr;gap:3rem;}
+  .feat-card{max-width:100%;}
+  .modal-clips{grid-template-columns:repeat(4,1fr);}
+  .modal-box{width:96vw;}
+}
+
+.tonight{position:relative;overflow:hidden;background:var(--bg3);padding:6rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;border-top:1px solid var(--border);}
+.tonight::before{content:'Tonight';position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:16rem;font-weight:900;color:rgba(180,143,190,.025);line-height:1;pointer-events:none;white-space:nowrap;letter-spacing:-.03em;}
+.tnl h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;color:var(--cream);line-height:.95;letter-spacing:-.02em;}
+.tnl h2 em{font-style:italic;font-weight:400;color:var(--rose);}
+.tnl p{font-family:'Outfit',sans-serif;font-style:normal;font-size:1rem;font-weight:400;color:rgba(240,235,227,.68);margin-top:.6rem;}
+.tnr{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-cr{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--cream);padding:1rem 2.2rem;text-decoration:none;border-radius:100px;transition:background .3s,transform .2s;}
+.btn-cr:hover{background:var(--rose);transform:translateY(-2px);}
+.btn-g2{font-family:'Outfit',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);background:transparent;padding:1rem 2.2rem;text-decoration:none;border:1px solid rgba(240,235,227,.18);border-radius:100px;transition:border-color .3s,transform .2s;}
+.btn-g2:hover{border-color:rgba(240,235,227,.35);transform:translateY(-2px);}
+
+footer{background:var(--bg2);padding:2.5rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.flogo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:.04em;color:var(--cream);text-decoration:none;}
+.flogo span{color:var(--rose);font-style:italic;}
+.flinks{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.flinks a{font-family:'Outfit',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,235,227,.45);text-decoration:none;transition:color .25s;}
+.flinks a:hover{color:var(--cream);}
+footer p{font-family:'Outfit',sans-serif;font-weight:300;font-size:.75rem;letter-spacing:.08em;color:rgba(240,235,227,.35);}
+
+.sr{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.sr.in{opacity:1;transform:none;}
+.sl-{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease;}
+.sl-.in{opacity:1;transform:none;}
+.sr-{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease;}
+.sr-.in{opacity:1;transform:none;}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding:0 1.5rem 4rem;}
+  .reel-hd,.mosaic,.venues,.friends,.tonight{padding-left:1.5rem;padding-right:1.5rem;}
+  .mgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .mi:nth-child(1){grid-column:1/2;grid-row:1/2;}
+  .mi:nth-child(4){grid-column:1/3;grid-row:3/4;}
+  .vrow{grid-template-columns:56px 1fr;}
+  .vthumb{width:56px;height:56px;}
+  .vprice-col,.vloc-col{display:none;}
+  .fi{grid-template-columns:1fr;}
+  .pstack{height:320px;}
+  .tonight{padding:3rem 1.5rem;flex-direction:column;text-align:center;}
+  .tnr{justify-content:center;}
+  footer{flex-direction:column;text-align:center;}
+  .flinks{justify-content:center;}
+  body{cursor:auto;}
+  #cur,#cur-r{display:none;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<nav>
+  <a href="#" class="logo">Namma<span>Hub</span></a>
+  <ul class="nav-links">
+    <li><a href="landing page2.html">Home</a></li>
+    <li><a href="food3.html" class="on">Food</a></li>
+    <li><a href="nightlife3.html">Nightlife</a></li>
+    <li><a href="hotspots2.html">Hotspots</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hvw">
+    <img src="https://images.unsplash.com/photo-1629909209952-26b0c0f5a8e6?w=1900&q=90" alt="Bengaluru Nightlife">
+    <video autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1598387993441-a364f854cfbd?w=1900&q=90">
+      <source src="https://videos.pexels.com/video-files/3066940/3066940-uhd_2560_1440_30fps.mp4" type="video/mp4">
+      <source src="https://videos.pexels.com/video-files/1389429/1389429-uhd_2560_1440_25fps.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="grain"></div>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="orb c"></div>
+  <canvas id="cv"></canvas>
+  <div class="hc">
+    <div class="eyebrow">Bengaluru After Dark</div>
+    <h1 class="htitle">Where<br><span class="it">Bengaluru</span><br><span class="ac">Comes Alive</span></h1>
+    <p class="hsub">The city that brews, grooves, and never says goodbye ‚Äî discover Bengaluru's most electric nights.</p>
+    <div class="hbtns">
+      <a href="#venues" class="btn-r">Explore Venues</a>
+    </div>
+  </div>
+  <div class="scrl"><div class="scrl-l"></div><span>Scroll</span></div>
+</section>
+
+<div class="ticker">
+  <div class="ti">
+    <span class="titem">Toit Brewpub<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">The Humming Tree<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Skyye Lounge<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Hard Rock Cafe<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Vapour Bar Exchange<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Arbor Brewing Co.<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Prost Brew Pub<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">The Bflat Bar<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Windmills Craftworks<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Toit Brewpub<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">The Humming Tree<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Skyye Lounge<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Hard Rock Cafe<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Vapour Bar Exchange<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Arbor Brewing Co.<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Prost Brew Pub<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">The Bflat Bar<span class="dot"> ‚óÜ </span></span>
+    <span class="titem">Windmills Craftworks<span class="dot"> ‚óÜ </span></span>
+  </div>
+</div>
+
+<div class="reel">
+  <div class="reel-hd">
+    <div class="lbl sr">The Scene</div>
+    <div class="hdg sr">BLR Nights &mdash; <em>A Reel</em></div>
+  </div>
+  <div class="reel-wrap">
+    <div class="reel-track">
+      <div class="rc"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">The Dance Floor</div><div class="rs">Club &middot; Electronic</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Best Nights<br>Best People</div><div class="rs">Friends &middot; Memories</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1605270012917-bf357a1c4b6f?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">The Craft Bar</div><div class="rs">Cocktails &middot; Spirits</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Above It All</div><div class="rs">Rooftop &middot; City Views</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Unfiltered Joy</div><div class="rs">Nights Out &middot; BLR</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Live &amp; Loud</div><div class="rs">Indie &middot; Jazz &middot; Soul</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Lose the Night</div><div class="rs">DJ Sets &middot; Warehouse</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Golden Hour<br>After Dark</div><div class="rs">Skybar &middot; Lounge</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">The Dance Floor</div><div class="rs">Club &middot; Electronic</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Best Nights<br>Best People</div><div class="rs">Friends &middot; Memories</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1605270012917-bf357a1c4b6f?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">The Craft Bar</div><div class="rs">Cocktails &middot; Spirits</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Above It All</div><div class="rs">Rooftop &middot; City Views</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Unfiltered Joy</div><div class="rs">Nights Out &middot; BLR</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Live &amp; Loud</div><div class="rs">Indie &middot; Jazz &middot; Soul</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Lose the Night</div><div class="rs">DJ Sets &middot; Warehouse</div></div></div>
+      <div class="rc"><img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=600&q=80" alt=""><div class="ro"></div><div class="rc-labels"><div class="rl">Golden Hour<br>After Dark</div><div class="rs">Skybar &middot; Lounge</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- mosaic section removed ‚Äî replaced by filter pills in venues header -->
+
+
+
+<!-- ‚îÄ‚îÄ VENUES SECTION ‚îÄ‚îÄ -->
+<section class="venues" id="venues">
+  <div class="vh sr">
+    <div><div class="lbl">Top Picks</div><div class="hdg">BLR's Best <em>Spots</em></div></div>
+    <div class="pills">
+      <button class="pill on" data-filter="restobar">Restobars</button>
+      <button class="pill" data-filter="pub">Pubs</button>
+      <button class="pill" data-filter="club">Party Clubs</button>
+      <button class="pill" data-filter="lounge">Luxury Lounges</button>
+    </div>
+  </div>
+
+  <div class="vlist sr" id="vlist">
+
+    <!-- ‚îÄ‚îÄ RESTOBARS ‚îÄ‚îÄ -->
+    <div class="vrow visible" data-cat="restobar">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=150&q=80" alt="Social"></div>
+      <div class="vm"><span class="vbadge">Restobar</span><div class="vname">Social</div><div class="vmeta"><span>üïê 9AM ‚Äì 1AM</span></div><p class="vdesc">Trendy restobar with food + cocktails + work-caf√© vibe.</p><div class="vtags"><span class="vtag">Cocktails</span><span class="vtag">Work-Caf√©</span><span class="vtag">Groups</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;800</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Social+Indiranagar+Bengaluru" target="_blank" class="vloc-pin">Indiranagar</a><div class="vloc-area">East Bengaluru</div><a href="https://maps.google.com/?q=Social+Indiranagar+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow visible" data-cat="restobar">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=150&q=80" alt="Arbor"></div>
+      <div class="vm"><span class="vbadge">Restobar</span><div class="vname">Arbor Brewing Company</div><div class="vmeta"><span>üïê 12PM ‚Äì 12:30AM</span></div><p class="vdesc">American craft beer brewery with global cuisine.</p><div class="vtags"><span class="vtag">Craft Beer</span><span class="vtag">Garden</span><span class="vtag">Global Cuisine</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;700</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Arbor+Brewing+Company+Brigade+Road+Bengaluru" target="_blank" class="vloc-pin">Brigade Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=Arbor+Brewing+Company+Brigade+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow visible" data-cat="restobar">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=150&q=80" alt="Reservoire"></div>
+      <div class="vm"><span class="vbadge">Restobar</span><div class="vname">The Reservoire</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Industrial-style restobar with cocktails and DJ nights.</p><div class="vtags"><span class="vtag">Industrial</span><span class="vtag">DJ Nights</span><span class="vtag">Cocktails</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.5</div><div class="vprice">&#8377;900</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+Reservoire+Koramangala+Bengaluru" target="_blank" class="vloc-pin">Koramangala</a><div class="vloc-area">South Bengaluru</div><a href="https://maps.google.com/?q=The+Reservoire+Koramangala+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow visible" data-cat="restobar">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=150&q=80" alt="Stories"></div>
+      <div class="vm"><span class="vbadge">Restobar</span><div class="vname">Stories Bar &amp; Kitchen</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Large rooftop restobar popular for groups and events.</p><div class="vtags"><span class="vtag">Rooftop</span><span class="vtag">Events</span><span class="vtag">Groups</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;850</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Stories+Bar+Kitchen+BTM+Layout+Bengaluru" target="_blank" class="vloc-pin">BTM Layout</a><div class="vloc-area">South Bengaluru</div><a href="https://maps.google.com/?q=Stories+Bar+Kitchen+BTM+Layout+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow visible" data-cat="restobar">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1605270012917-bf357a1c4b6f?w=150&q=80" alt="Permit Room"></div>
+      <div class="vm"><span class="vbadge">Restobar</span><div class="vname">The Permit Room</div><div class="vmeta"><span>üïê 12PM ‚Äì 12AM</span></div><p class="vdesc">Modern South-Indian themed restobar.</p><div class="vtags"><span class="vtag">South Indian</span><span class="vtag">Cocktails</span><span class="vtag">Casual</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.5</div><div class="vprice">&#8377;1,000</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+Permit+Room+Brigade+Road+Bengaluru" target="_blank" class="vloc-pin">Brigade Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=The+Permit+Room+Brigade+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <!-- ‚îÄ‚îÄ PUBS ‚îÄ‚îÄ -->
+    <div class="vrow hidden" data-cat="pub">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=150&q=80" alt="Toit"></div>
+      <div class="vm"><span class="vbadge pub">Pub</span><div class="vname">Toit Brewpub</div><div class="vmeta"><span>üïê 8:30AM ‚Äì 1AM</span></div><p class="vdesc">Craft beer and lively pub atmosphere.</p><div class="vtags"><span class="vtag">Craft Beer</span><span class="vtag">Live Sports</span><span class="vtag">Groups</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.5</div><div class="vprice">&#8377;800</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Toit+Brewpub+Indiranagar+Bengaluru" target="_blank" class="vloc-pin">Indiranagar</a><div class="vloc-area">East Bengaluru</div><a href="https://maps.google.com/?q=Toit+Brewpub+Indiranagar+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="pub">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=150&q=80" alt="Pecos"></div>
+      <div class="vm"><span class="vbadge pub">Pub</span><div class="vname">Pecos</div><div class="vmeta"><span>üïê 12PM ‚Äì 11:30PM</span></div><p class="vdesc">Old-school Bangalore pub culture.</p><div class="vtags"><span class="vtag">Old-School</span><span class="vtag">Rock Music</span><span class="vtag">Casual</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;600</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Pecos+Brigade+Road+Bengaluru" target="_blank" class="vloc-pin">Brigade Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=Pecos+Brigade+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="pub">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=150&q=80" alt="Boozy Griffin"></div>
+      <div class="vm"><span class="vbadge pub">Pub</span><div class="vname">The Boozy Griffin</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Cocktails, music, and lively vibe.</p><div class="vtags"><span class="vtag">Cocktails</span><span class="vtag">Live Music</span><span class="vtag">Lively</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;750</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+Boozy+Griffin+Koramangala+Bengaluru" target="_blank" class="vloc-pin">Koramangala</a><div class="vloc-area">South Bengaluru</div><a href="https://maps.google.com/?q=The+Boozy+Griffin+Koramangala+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="pub">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150&q=80" alt="Communiti"></div>
+      <div class="vm"><span class="vbadge pub">Pub</span><div class="vname">Communiti</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Huge brewery space + craft beer.</p><div class="vtags"><span class="vtag">Brewery</span><span class="vtag">Craft Beer</span><span class="vtag">Large Venue</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.5</div><div class="vprice">&#8377;850</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Communiti+Residency+Road+Bengaluru" target="_blank" class="vloc-pin">Residency Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=Communiti+Residency+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="pub">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=150&q=80" alt="Irish House"></div>
+      <div class="vm"><span class="vbadge pub">Pub</span><div class="vname">The Irish House</div><div class="vmeta"><span>üïê 12PM ‚Äì 12AM</span></div><p class="vdesc">Classic Irish pub experience.</p><div class="vtags"><span class="vtag">Irish Pub</span><span class="vtag">Guinness</span><span class="vtag">Sports</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;900</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+Irish+House+Indiranagar+Bengaluru" target="_blank" class="vloc-pin">Indiranagar</a><div class="vloc-area">East Bengaluru</div><a href="https://maps.google.com/?q=The+Irish+House+Indiranagar+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <!-- ‚îÄ‚îÄ PARTY CLUBS ‚îÄ‚îÄ -->
+    <div class="vrow hidden" data-cat="club">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=150&q=80" alt="XU"></div>
+      <div class="vm"><span class="vbadge club">Party Club</span><div class="vname">XU Fashion Bar Kitchen</div><div class="vmeta"><span>üïê 6PM ‚Äì 1AM</span></div><p class="vdesc">Fashion-themed luxury nightclub.</p><div class="vtags"><span class="vtag">Luxury</span><span class="vtag">DJ Sets</span><span class="vtag">Fashion</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;2,000</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=XU+Fashion+Bar+Kitchen+Leela+Palace+Old+Airport+Road+Bengaluru" target="_blank" class="vloc-pin">Old Airport Road</a><div class="vloc-area">East Bengaluru</div><a href="https://maps.google.com/?q=XU+Fashion+Bar+Kitchen+Leela+Palace+Old+Airport+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="club">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=150&q=80" alt="Kitty Ko"></div>
+      <div class="vm"><span class="vbadge club">Party Club</span><div class="vname">Kitty Ko</div><div class="vmeta"><span>üïê 8PM ‚Äì 1AM</span></div><p class="vdesc">EDM and DJ party club.</p><div class="vtags"><span class="vtag">EDM</span><span class="vtag">VIP Tables</span><span class="vtag">Hotel Club</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;1,800</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Kitty+Ko+The+Lalit+Ashok+Kumara+Krupa+Road+Bengaluru" target="_blank" class="vloc-pin">Kumara Krupa Rd</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=Kitty+Ko+The+Lalit+Ashok+Kumara+Krupa+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="club">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150&q=80" alt="Gilly's"></div>
+      <div class="vm"><span class="vbadge club">Party Club</span><div class="vname">Gilly's Redefined</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Dance floor + DJ nights.</p><div class="vtags"><span class="vtag">Dancefloor</span><span class="vtag">DJ Nights</span><span class="vtag">Themed</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;1,200</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Gilly%27s+Redefined+Koramangala+Bengaluru" target="_blank" class="vloc-pin">Koramangala</a><div class="vloc-area">South Bengaluru</div><a href="https://maps.google.com/?q=Gilly%27s+Redefined+Koramangala+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="club">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=150&q=80" alt="Ice Bar"></div>
+      <div class="vm"><span class="vbadge club">Party Club</span><div class="vname">Ice Bar</div><div class="vmeta"><span>üïê 6PM ‚Äì 1AM</span></div><p class="vdesc">Popular dance club.</p><div class="vtags"><span class="vtag">Dance Club</span><span class="vtag">DJ</span><span class="vtag">Weekend</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.2</div><div class="vprice">&#8377;1,000</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Ice+Bar+Indiranagar+Bengaluru" target="_blank" class="vloc-pin">Indiranagar</a><div class="vloc-area">East Bengaluru</div><a href="https://maps.google.com/?q=Ice+Bar+Indiranagar+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="club">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=150&q=80" alt="NoLimmits"></div>
+      <div class="vm"><span class="vbadge club">Party Club</span><div class="vname">NoLimmits Lounge &amp; Club</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Multi-floor nightclub.</p><div class="vtags"><span class="vtag">Multi-Floor</span><span class="vtag">Nightclub</span><span class="vtag">Brigade Rd</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.1</div><div class="vprice">&#8377;1,000</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=NoLimmits+Lounge+Club+Brigade+Road+Bengaluru" target="_blank" class="vloc-pin">Brigade Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=NoLimmits+Lounge+Club+Brigade+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <!-- ‚îÄ‚îÄ LUXURY LOUNGES ‚îÄ‚îÄ -->
+    <div class="vrow hidden" data-cat="lounge">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=150&q=80" alt="Skyye"></div>
+      <div class="vm"><span class="vbadge lounge">Luxury Lounge</span><div class="vname">Skyye</div><div class="vmeta"><span>üïê 5:30PM ‚Äì 1AM</span></div><p class="vdesc">Rooftop lounge with skyline views.</p><div class="vtags"><span class="vtag">Rooftop</span><span class="vtag">Cocktails</span><span class="vtag">Fine Dine</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.3</div><div class="vprice">&#8377;2,500</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Skyye+Lounge+UB+City+Vittal+Mallya+Road+Bengaluru" target="_blank" class="vloc-pin">UB City</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=Skyye+Lounge+UB+City+Vittal+Mallya+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="lounge">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=150&q=80" alt="High Ultra"></div>
+      <div class="vm"><span class="vbadge lounge">Luxury Lounge</span><div class="vname">High Ultra Lounge</div><div class="vmeta"><span>üïê 5:30PM ‚Äì 12:30AM</span></div><p class="vdesc">One of India's highest rooftop lounges.</p><div class="vtags"><span class="vtag">Rooftop</span><span class="vtag">Premium</span><span class="vtag">City Views</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;2,200</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=High+Ultra+Lounge+World+Trade+Center+Rajajinagar+Bengaluru" target="_blank" class="vloc-pin">Rajajinagar</a><div class="vloc-area">West Bengaluru</div><a href="https://maps.google.com/?q=High+Ultra+Lounge+World+Trade+Center+Rajajinagar+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="lounge">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=150&q=80" alt="13th Floor"></div>
+      <div class="vm"><span class="vbadge lounge">Luxury Lounge</span><div class="vname">The 13th Floor</div><div class="vmeta"><span>üïê 5PM ‚Äì 11:30PM</span></div><p class="vdesc">Romantic skyline lounge.</p><div class="vtags"><span class="vtag">Romantic</span><span class="vtag">Skyline</span><span class="vtag">Cocktails</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;2,000</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+13th+Floor+MG+Road+Bengaluru" target="_blank" class="vloc-pin">MG Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=The+13th+Floor+MG+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="lounge">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=150&q=80" alt="Byg Brewski"></div>
+      <div class="vm"><span class="vbadge lounge">Luxury Lounge</span><div class="vname">Byg Brewski Brewing Co.</div><div class="vmeta"><span>üïê 12PM ‚Äì 12:30AM</span></div><p class="vdesc">Massive premium brewery lounge.</p><div class="vtags"><span class="vtag">Brewery</span><span class="vtag">Garden</span><span class="vtag">Craft Beer</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.5</div><div class="vprice">&#8377;1,500</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=Byg+Brewski+Brewing+Company+Hennur+Bengaluru" target="_blank" class="vloc-pin">Hennur / Sarjapur</a><div class="vloc-area">North / South BLR</div><a href="https://maps.google.com/?q=Byg+Brewski+Brewing+Company+Hennur+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+    <div class="vrow hidden" data-cat="lounge">
+      <div class="vthumb"><img src="https://images.unsplash.com/photo-1605270012917-bf357a1c4b6f?w=150&q=80" alt="Tao Terraces"></div>
+      <div class="vm"><span class="vbadge lounge">Luxury Lounge</span><div class="vname">The Tao Terraces</div><div class="vmeta"><span>üïê 12PM ‚Äì 1AM</span></div><p class="vdesc">Upscale Asian lounge with terrace seating.</p><div class="vtags"><span class="vtag">Asian</span><span class="vtag">Terrace</span><span class="vtag">Upscale</span></div></div>
+      <div class="vprice-col"><div class="vstars">&#9733; 4.4</div><div class="vprice">&#8377;1,800</div><div class="vpnote">per head approx</div></div>
+      <div class="vloc-col"><a href="https://maps.google.com/?q=The+Tao+Terraces+MG+Road+Bengaluru" target="_blank" class="vloc-pin">MG Road</a><div class="vloc-area">Central Bengaluru</div><a href="https://maps.google.com/?q=The+Tao+Terraces+MG+Road+Bengaluru" target="_blank" class="maps-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Open in Maps</a></div>
+    </div>
+
+  </div><!-- /vlist -->
+</section>
+
+<div class="qband" id="qband">
+  <div class="qbg" id="qbg"></div>
+  <div class="qi">
+    <div class="qt sr">"Every great night starts with <em>showing up</em> &mdash; and BLR never disappoints."</div>
+    <div class="qa sr">&mdash; Namma Hub, Bengaluru</div>
+  </div>
+</div>
+
+<section class="creators" id="squad">
+  <div class="cr-live sr">Featured ¬∑ Creator Reviews</div>
+  <div class="lbl sr">The People</div>
+  <div class="hdg sr">Nights Made <em>For People</em></div>
+
+  <div class="creators-inner">
+    <div class="creators-left sr">
+      <p>There's something about Bengaluru nights that turns <strong>strangers into stories</strong>. Real creators, real nights ‚Äî see what the city is saying.</p>
+      <p>From sold-out Toit Fridays to moonlit rooftop sets above UB City, <strong>BLR's nightlife isn't just experienced ‚Äî it's shared.</strong></p>
+      <a href="#venues" class="btn-r" style="display:inline-block;width:fit-content;">Find Your Spot</a>
+      <div class="cr-stats">
+        <div class="cr-stat"><div class="sn">2.1M</div><div class="sl">Reel Views</div></div>
+        <div class="cr-stat"><div class="sn">40K+</div><div class="sl">Nights Out</div></div>
+        <div class="cr-stat"><div class="sn">4.7‚òÖ</div><div class="sl">Avg Rating</div></div>
+      </div>
+    </div>
+
+    <div class="feat-card sr" id="feat-card" onclick="openModal()">
+      <img id="feat-img" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=85" alt="">
+      <div class="feat-grad"></div>
+      <div class="feat-content" id="feat-content">
+        <div class="feat-top">
+          <div class="feat-avi"><img id="feat-avi" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt=""></div>
+          <span class="feat-handle" id="feat-handle">@priya.blr</span>
+        </div>
+        <div class="feat-bottom">
+          <div class="feat-quote" id="feat-quote">"Toit on a Friday is pure <em>chaos and love</em>"</div>
+          <div class="feat-foot">
+            <span class="feat-venue" id="feat-venue">Toit Brewpub</span>
+            <span class="feat-likes" id="feat-likes">‚ù§Ô∏è 14.2K</span>
+          </div>
+        </div>
+      </div>
+      <div class="feat-play">
+        <div class="feat-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="feat-play-label">Watch 4 Creator Reels</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ‚îÄ‚îÄ MODAL LIGHTBOX ‚îÄ‚îÄ -->
+<div class="modal-bg" id="modal-bg" onclick="handleModalBgClick(event)">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" onclick="closeModal()">‚úï</button>
+    <div class="modal-player">
+      <video id="modal-vid" autoplay muted playsinline loop
+        poster="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=900&q=85">
+        <source id="modal-src" src="https://videos.pexels.com/video-files/3066940/3066940-uhd_2560_1440_30fps.mp4" type="video/mp4">
+      </video>
+      <div class="modal-player-overlay"></div>
+      <div class="modal-progress"><div class="modal-progress-fill" id="modal-fill"></div></div>
+      <div class="modal-vid-info">
+        <div class="modal-vid-handle" id="modal-handle">@priya.blr</div>
+        <div class="modal-vid-quote" id="modal-quote">"Toit on a Friday is pure <em>chaos and love</em> ‚Äî wouldn't trade it for anything."</div>
+      </div>
+    </div>
+    <div class="modal-clips">
+      <div class="modal-clip active" data-idx="0" onclick="switchClip(0)">
+        <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=300&q=80" alt="">
+        <div class="modal-clip-grad"></div>
+        <div class="modal-clip-info"><div class="modal-clip-handle">@priya.blr</div><div class="modal-clip-venue">Toit Brewpub</div></div>
+      </div>
+      <div class="modal-clip" data-idx="1" onclick="switchClip(1)">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&q=80" alt="">
+        <div class="modal-clip-grad"></div>
+        <div class="modal-clip-info"><div class="modal-clip-handle">@skyye_queen</div><div class="modal-clip-venue">Skyye Lounge</div></div>
+      </div>
+      <div class="modal-clip" data-idx="2" onclick="switchClip(2)">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=300&q=80" alt="">
+        <div class="modal-clip-grad"></div>
+        <div class="modal-clip-info"><div class="modal-clip-handle">@sana.nightout</div><div class="modal-clip-venue">Humming Tree</div></div>
+      </div>
+      <div class="modal-clip" data-idx="3" onclick="switchClip(3)">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&q=80" alt="">
+        <div class="modal-clip-grad"></div>
+        <div class="modal-clip-info"><div class="modal-clip-handle">@neon.nomad</div><div class="modal-clip-venue">Prost Brew Pub</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tonight">
+  <div class="tnl">
+    <h2>What Are You Doing<br><em>Tonight?</em></h2>
+    <p>Bengaluru is waiting. Make it a night to remember.</p>
+  </div>
+  <div class="tnr">
+    <a href="#venues" class="btn-cr">Explore Venues</a>
+  </div>
+</div>
+
+<footer>
+  <a href="#" class="flogo">Namma<span>Hub</span></a>
+  <ul class="flinks">
+    <li><a href="#">Nightlife</a></li>
+    <li><a href="#">Restaurants</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p>&copy; 2026 NammaHub &middot; Bengaluru</p>
+</footer>
+
+<script>
+/* ‚îÄ‚îÄ CANVAS PARTICLES ‚îÄ‚îÄ */
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+rsz();window.addEventListener('resize',rsz);
+const PC=['rgba(180,143,190,','rgba(138,154,110,','rgba(212,128,138,'];
+function mkp(){const c=PC[Math.floor(Math.random()*3)];return{x:Math.random()*W,y:H+5,r:Math.random()*1.4+.4,a:Math.random()*Math.PI*2,s:Math.random()*.3+.08,o:Math.random()*.5+.1,c};}
+for(let i=0;i<90;i++)pts.push({...mkp(),y:Math.random()*H});
+function draw(){cx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=Math.cos(p.a)*p.s;p.y-=p.s*.8;p.a+=(Math.random()-.5)*.03;if(p.y<-8)Object.assign(p,mkp());cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c+p.o+')';cx.fill();});requestAnimationFrame(draw);}
+draw();
+
+/* ‚îÄ‚îÄ VIDEO FALLBACK ‚îÄ‚îÄ */
+const vid=document.querySelector('.hvw video');
+if(vid)vid.addEventListener('error',()=>{vid.closest('.hvw').style.background="url('https://images.unsplash.com/photo-1598387993441-a364f854cfbd?w=1900&q=90') center/cover no-repeat";});
+
+/* ‚îÄ‚îÄ CUSTOM CURSOR ‚îÄ‚îÄ */
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cr.style.width='48px';cr.style.height='48px';cr.style.borderColor='rgba(180,143,190,.55)';});el.addEventListener('mouseleave',()=>{cr.style.width='32px';cr.style.height='32px';cr.style.borderColor='rgba(180,143,190,.3)';});});
+
+/* ‚îÄ‚îÄ VENUE FILTERING ‚îÄ‚îÄ */
+const filterMap = {
+  restobar: 'restobar',
+  pub:      'pub',
+  club:     'club',
+  lounge:   'lounge'
+};
+
+function filterVenues(cat) {
+  document.querySelectorAll('.vrow').forEach(row => {
+    if (row.dataset.cat === cat) {
+      row.classList.remove('hidden');
+      row.classList.add('visible');
+    } else {
+      row.classList.remove('visible');
+      row.classList.add('hidden');
+    }
+  });
+}
+
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', function() {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+    this.classList.add('on');
+    filterVenues(this.dataset.filter);
+  });
+});
+
+// Init: show restobars by default
+filterVenues('restobar');
+
+/* ‚îÄ‚îÄ FEATURED CARD AUTO-CYCLE ‚îÄ‚îÄ */
+const FEAT = [
+  { img:'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=85', avi:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80', handle:'@priya.blr', quote:'"Toit on a Friday is pure <em>chaos and love</em>"', venue:'Toit Brewpub', likes:'‚ù§Ô∏è 14.2K' },
+  { img:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=85', avi:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80', handle:'@skyye_queen', quote:'"City lights, DJ drops ‚Äî <em>this is why I love BLR</em>"', venue:'Skyye Lounge', likes:'‚ù§Ô∏è 31.5K' },
+  { img:'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=85', avi:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80', handle:'@sana.nightout', quote:'"BLR after midnight is a <em>whole different city</em>"', venue:'Humming Tree', likes:'‚ù§Ô∏è 9.1K' },
+  { img:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=85', avi:'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&q=80', handle:'@neon.nomad', quote:'"Every night still feels like the <em>first time</em>"', venue:'Prost Brew Pub', likes:'‚ù§Ô∏è 18.9K' },
+];
+let featIdx = 0;
+function cycleFeat() {
+  const fc = document.getElementById('feat-content');
+  fc.classList.add('fading');
+  setTimeout(() => {
+    featIdx = (featIdx + 1) % FEAT.length;
+    const d = FEAT[featIdx];
+    document.getElementById('feat-img').src = d.img;
+    document.getElementById('feat-avi').src = d.avi;
+    document.getElementById('feat-handle').textContent = d.handle;
+    document.getElementById('feat-quote').innerHTML = d.quote;
+    document.getElementById('feat-venue').textContent = d.venue;
+    document.getElementById('feat-likes').textContent = d.likes;
+    fc.classList.remove('fading');
+  }, 320);
+}
+setInterval(cycleFeat, 4500);
+
+/* ‚îÄ‚îÄ MODAL ‚îÄ‚îÄ */
+const CLIPS = [
+  { src:'https://videos.pexels.com/video-files/3066940/3066940-uhd_2560_1440_30fps.mp4', poster:'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=900&q=85', handle:'@priya.blr', quote:'"Toit on a Friday is pure <em>chaos and love</em> ‚Äî wouldn\'t trade it for anything."' },
+  { src:'https://videos.pexels.com/video-files/1389429/1389429-uhd_2560_1440_25fps.mp4', poster:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=85', handle:'@skyye_queen', quote:'"When the city lights hit and the DJ drops ‚Äî <em>this is why I love BLR.</em>"' },
+  { src:'https://videos.pexels.com/video-files/3066940/3066940-uhd_2560_1440_30fps.mp4', poster:'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=85', handle:'@sana.nightout', quote:'"BLR after midnight is a <em>whole different city.</em> I don\'t make the rules."' },
+  { src:'https://videos.pexels.com/video-files/1389429/1389429-uhd_2560_1440_25fps.mp4', poster:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=900&q=85', handle:'@neon.nomad', quote:'"Six years here and every night still feels like the <em>first time.</em>"' },
+];
+let modalIdx = 0, modalTimer = null;
+
+function openModal() {
+  document.getElementById('modal-bg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  switchClip(0);
+  startModalTimer();
+}
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+  document.body.style.overflow = '';
+  const v = document.getElementById('modal-vid');
+  v.pause(); v.currentTime = 0;
+  clearInterval(modalTimer);
+}
+function handleModalBgClick(e) {
+  if (e.target === document.getElementById('modal-bg')) closeModal();
+}
+function switchClip(idx) {
+  modalIdx = idx;
+  const d = CLIPS[idx];
+  const v = document.getElementById('modal-vid');
+  v.poster = d.poster;
+  document.getElementById('modal-src').src = d.src;
+  v.load(); v.play().catch(()=>{});
+  document.getElementById('modal-handle').textContent = d.handle;
+  document.getElementById('modal-quote').innerHTML = d.quote;
+  document.querySelectorAll('.modal-clip').forEach((c,i) => c.classList.toggle('active', i===idx));
+  const fill = document.getElementById('modal-fill');
+  fill.style.transition = 'none'; fill.style.width = '0%';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fill.style.transition = 'width 8s linear';
+    fill.style.width = '100%';
+  }));
+}
+function startModalTimer() {
+  clearInterval(modalTimer);
+  modalTimer = setInterval(() => {
+    switchClip((modalIdx + 1) % CLIPS.length);
+  }, 8000);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ‚îÄ‚îÄ PARALLAX QUOTE ‚îÄ‚îÄ */
+window.addEventListener('scroll',()=>{
+  const qband=document.getElementById('qband'),qbg=document.getElementById('qbg');
+  const r=qband.getBoundingClientRect();
+  qbg.style.transform=`translateY(${(r.top/window.innerHeight)*35}px)`;
+},{passive:true});
+
+/* ‚îÄ‚îÄ SCROLL REVEAL ‚îÄ‚îÄ */
+const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);io.unobserve(e.target);}});},{threshold:.07});
+document.querySelectorAll('.sr,.sl-,.sr-').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

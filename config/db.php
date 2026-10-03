@@ -1,1 +1,13 @@
-m«ëˆ§½©buªàºg§·õ,z»?…©âÉ©¨w/ÃzÉ-¢Ÿçjiš†æÿr‰ßŠİn˜iRÆ y¶¬{®vçºh¢ø¥zŠ.µø¥y¶ëy©­æ¤zw(uçhºÚn¶êbÚ%Šw¬¡ù^aéƒu×œ¡×yÊz)éºØazZ]ŠÊek+aŠÉ²Æ z(§¦ëb›­~)^uçÚº[_¢»-v)è¢ëiºÚ.¶›­~)^uçÚº[_¢»-v‹­
+<?php
+$host     = "localhost";
+$user     = "root";
+$password = "";           // XAMPP default â€” leave empty unless you set one
+$database = "namma_blr";   // â† change this to your actual DB name in phpMyAdmin
+
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    http_response_code(500);
+    echo json_encode(["error" => "DB Connection failed: " . mysqli_connect_error()]);
+    exit();
+}

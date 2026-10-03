@@ -1,1 +1,878 @@
-m�눧��bu��g���,z�?���ɩ�w/�z�-���ji����~��f�K��ڱ��[�颊w��(����ۭ�n����ܡם��i�۩�{h�)޲��zx-�{��^r�^u�(u触�a��iv+)����+&z��袞���zn���yןj�m~��ا�����h��n���yןj�m~���.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Food — Namma BLR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f3ef;
+  --bg2:#f0ebe4;
+  --white:#ffffff;
+  --ink:#1a1613;
+  --ink2:#2e2825;
+  --muted:#9c9189;
+  --border:#e3d9cf;
+  --maroon:#7d1f3a;
+  --maroon2:#a02848;
+  --maroon-light:#fdf0f3;
+  --maroon-faint:#f9e8ec;
+  --green:#166534;
+  --green-bg:#f0fdf4;
+  --stone:#ede5dd;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(247,243,239,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:.01em;}
+.nav-logo span{color:var(--maroon);}
+.nav-links{display:flex;gap:1.8rem;}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a.active{color:var(--maroon);font-weight:600;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--maroon);color:#fff;border:none;padding:.48rem 1.1rem;border-radius:6px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.nav-cta:hover{background:var(--maroon2);}
+.nav-mobile-menu{display:none;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink);}
+
+/* HERO */
+.hero{margin-top:60px;position:relative;height:58vh;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(15deg,rgba(20,12,8,.88) 0%,rgba(20,12,8,.4) 55%,rgba(20,12,8,.1) 100%);}
+.hero-inner{position:relative;z-index:2;padding:0 2.5rem 3rem;width:100%;}
+.hero-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.7rem;}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,4.2rem);color:#fff;line-height:1.05;margin-bottom:1.2rem;}
+.hero-title em{color:#e8a0b0;font-style:italic;}
+.search-bar{display:flex;align-items:center;background:rgba(255,255,255,.97);border-radius:8px;overflow:hidden;max-width:540px;box-shadow:0 8px 40px rgba(0,0,0,.22);}
+.search-bar input{flex:1;padding:.85rem 1.1rem;border:none;outline:none;font-size:.88rem;font-family:'DM Sans',sans-serif;color:var(--ink);background:transparent;}
+.search-bar input::placeholder{color:#b5a99f;}
+.search-bar button{background:var(--maroon);color:#fff;border:none;padding:.85rem 1.4rem;font-size:.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background .2s;}
+.search-bar button:hover{background:var(--maroon2);}
+
+/* SORT BAR */
+.sort-bar{position:sticky;top:60px;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:.7rem 2.5rem;display:flex;align-items:center;gap:.6rem;overflow-x:auto;scrollbar-width:none;}
+.sort-bar::-webkit-scrollbar{display:none;}
+.sort-label{font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;margin-right:.3rem;letter-spacing:.05em;text-transform:uppercase;}
+.sort-btn{display:flex;align-items:center;gap:.4rem;background:var(--bg);border:1.5px solid var(--border);color:var(--ink);padding:.45rem 1rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.sort-btn:hover{border-color:var(--maroon);color:var(--maroon);}
+.sort-btn.active{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+
+/* CUISINE STRIP */
+.cuisine-strip{background:var(--white);border-bottom:1px solid var(--border);padding:1.2rem 2.5rem;}
+.cuisine-scroll{display:flex;gap:2rem;overflow-x:auto;scrollbar-width:none;align-items:center;}
+.cuisine-scroll::-webkit-scrollbar{display:none;}
+.ctile{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;}
+.ctile-img{width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid var(--border);transition:border-color .2s,transform .2s;}
+.ctile-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.ctile:hover .ctile-img,.ctile.active .ctile-img{border-color:var(--maroon);transform:translateY(-2px);}
+.ctile:hover .ctile-img img{transform:scale(1.08);}
+.ctile-label{font-size:.7rem;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .2s;}
+.ctile:hover .ctile-label,.ctile.active .ctile-label{color:var(--maroon);}
+
+/* AREA STRIP */
+.area-strip{background:var(--bg2);border-bottom:1px solid var(--border);padding:.85rem 2.5rem;display:flex;align-items:center;gap:.5rem;overflow-x:auto;scrollbar-width:none;}
+.area-strip::-webkit-scrollbar{display:none;}
+.area-label{font-size:.7rem;font-weight:600;color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;margin-right:.4rem;}
+.achip{flex-shrink:0;display:flex;align-items:center;gap:.35rem;background:var(--white);border:1.5px solid var(--border);padding:.38rem .85rem;border-radius:20px;font-size:.76rem;font-weight:600;color:var(--ink);cursor:pointer;transition:all .2s;white-space:nowrap;}
+.achip:hover,.achip.active{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+.achip-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s;}
+.achip.active .achip-dot,.achip:hover .achip-dot{background:rgba(255,255,255,.5);}
+
+/* BODY LAYOUT */
+.body-layout{display:grid;grid-template-columns:240px 1fr;min-height:60vh;width:100%;overflow:hidden;}
+
+/* SIDEBAR */
+.sidebar{background:var(--white);border-right:1px solid var(--border);padding:2rem 1.4rem;position:sticky;top:calc(60px + 44px + 93px + 47px);height:fit-content;}
+.sb-heading{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--ink);margin-bottom:1.5rem;padding-bottom:.7rem;border-bottom:1px solid var(--border);}
+.sb-group{margin-bottom:1.6rem;}
+.sb-group:last-child{margin-bottom:0;}
+.sb-group-title{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;}
+.diet-toggle{display:flex;background:var(--bg);border-radius:6px;overflow:hidden;border:1.5px solid var(--border);}
+.dt-btn{flex:1;padding:.5rem;font-size:.75rem;font-weight:600;border:none;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--muted);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.3rem;}
+.dt-btn.active-veg{background:#166534;color:#fff;}
+.dt-btn.active-nonveg{background:var(--maroon);color:#fff;}
+.dt-btn:not(.active-veg):not(.active-nonveg):hover{color:var(--ink);}
+.alc-toggle{display:flex;flex-direction:column;gap:.5rem;}
+.alc-opt{display:flex;align-items:center;gap:.7rem;padding:.5rem .6rem;border-radius:6px;cursor:pointer;transition:background .2s;}
+.alc-opt:hover{background:var(--bg);}
+.alc-radio{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);background:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
+.alc-radio.selected{border-color:var(--maroon);}
+.alc-radio-inner{width:7px;height:7px;border-radius:50%;background:var(--maroon);opacity:0;transition:opacity .2s;}
+.alc-radio.selected .alc-radio-inner{opacity:1;}
+.alc-label{font-size:.8rem;font-weight:500;color:var(--ink);}
+.budget-opts{display:flex;flex-direction:column;gap:.5rem;}
+.budget-opt{display:flex;align-items:center;gap:.7rem;padding:.55rem .7rem;border-radius:6px;border:1.5px solid var(--border);cursor:pointer;transition:all .2s;background:var(--white);}
+.budget-opt:hover{border-color:var(--maroon);}
+.budget-opt.active{border-color:var(--maroon);background:var(--maroon-faint);}
+.budget-icon{font-size:.82rem;font-weight:800;color:var(--maroon);min-width:28px;font-family:'DM Serif Display',serif;}
+.budget-text{font-size:.75rem;font-weight:500;color:var(--ink);line-height:1.4;}
+.budget-sub{font-size:.68rem;color:var(--muted);}
+.budget-check{margin-left:auto;width:16px;height:16px;border-radius:50%;background:var(--maroon);color:#fff;display:none;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;}
+.budget-opt.active .budget-check{display:flex;}
+.apply-btn{width:100%;padding:.65rem;background:var(--maroon);color:#fff;border:none;border-radius:6px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;margin-top:1.2rem;}
+.apply-btn:hover{background:var(--maroon2);}
+.reset-btn{width:100%;padding:.55rem;background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:.5rem;}
+.reset-btn:hover{border-color:var(--maroon);color:var(--maroon);}
+
+/* MAIN GRID */
+.main-grid-area{padding:1.8rem 2rem 3rem;min-width:0;overflow:hidden;}
+.grid-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
+.grid-count{font-size:.82rem;color:var(--muted);}
+.grid-count strong{color:var(--ink);font-weight:700;}
+.active-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+.atag{display:inline-flex;align-items:center;gap:.35rem;background:var(--maroon-faint);border:1px solid rgba(125,31,58,.18);color:var(--maroon);font-size:.7rem;font-weight:600;padding:.28rem .7rem;border-radius:20px;}
+.atag button{background:none;border:none;color:var(--maroon);cursor:pointer;font-size:.85rem;line-height:1;padding:0;}
+
+/* FEATURED ROW */
+.feat-row-title{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.feat-row-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.feat-scroll{display:flex;gap:1rem;overflow-x:auto;padding-bottom:.8rem;margin-bottom:2rem;scrollbar-width:none;}
+.feat-scroll::-webkit-scrollbar{display:none;}
+
+/* FEATURED CARD */
+.fcard{flex-shrink:0;width:280px;background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+.fcard:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,22,19,.12);}
+.fcard-carousel{position:relative;height:160px;overflow:hidden;}
+.fcard-carousel-track{display:flex;height:100%;transition:transform .35s ease;}
+.fcard-carousel-track img{flex-shrink:0;width:100%;height:100%;object-fit:cover;}
+.carousel-dot-row{position:absolute;bottom:.55rem;left:50%;transform:translateX(-50%);display:flex;gap:.3rem;z-index:5;}
+.cdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:background .2s,transform .2s;}
+.cdot.active{background:#fff;transform:scale(1.3);}
+.fcard-ribbon{position:absolute;top:.6rem;left:.6rem;background:var(--maroon);color:#fff;font-size:.58rem;font-weight:700;padding:.22rem .6rem;border-radius:4px;letter-spacing:.06em;text-transform:uppercase;z-index:5;}
+.fcard-save{position:absolute;top:.6rem;right:.6rem;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;z-index:5;transition:transform .2s;}
+.fcard-save:hover{transform:scale(1.15);}
+.fcard-body{padding:.95rem 1rem 1rem;display:flex;flex-direction:column;flex:1;}
+.fcard-name{font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fcard-sub{font-size:.7rem;color:var(--muted);margin-bottom:.65rem;}
+.fcard-pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.75rem;}
+.fpill{display:inline-flex;align-items:center;gap:.25rem;font-size:.65rem;font-weight:600;padding:.22rem .55rem;border-radius:20px;white-space:nowrap;}
+.fpill-veg{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+.fpill-nonveg{background:#fff1f2;color:#be123c;border:1px solid #fecdd3;}
+.fpill-alc{background:#fefce8;color:#854d0e;border:1px solid #fef08a;}
+.fpill-noalc{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;}
+.fpill-time{background:#f0f4ff;color:#3730a3;border:1px solid #c7d2fe;}
+.fcard-location{display:flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--muted);margin-bottom:.75rem;text-decoration:none;}
+.fcard-location:hover .floc-text{color:var(--maroon);}
+.floc-icon{font-size:.8rem;flex-shrink:0;}
+.floc-text{font-weight:600;color:var(--ink);transition:color .2s;}
+.fcard-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.65rem;border-top:1px solid var(--border);}
+.fcard-rating{font-size:.75rem;font-weight:700;color:var(--maroon);display:flex;align-items:center;gap:.2rem;}
+.fcard-price{font-size:.72rem;font-weight:700;color:var(--ink);}
+.fcard-reserve{background:var(--maroon);color:#fff;border:none;padding:.42rem .95rem;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .15s;}
+.fcard-reserve:hover{background:var(--maroon2);transform:scale(1.04);}
+
+/* RESTAURANT CARD */
+.grid-section-title{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.grid-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.rcard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;width:100%;}
+.rcard{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(26,22,19,.1);}
+.rcard-carousel{position:relative;height:162px;overflow:hidden;flex-shrink:0;}
+.rcard-carousel-track{display:flex;height:100%;transition:transform .35s ease;}
+.rcard-carousel-track img{flex-shrink:0;width:100%;height:100%;object-fit:cover;}
+.rcard-dot-row{position:absolute;bottom:.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.3rem;z-index:5;}
+.rdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .2s,transform .2s;}
+.rdot.active{background:#fff;transform:scale(1.3);}
+.rcard-status{position:absolute;top:.55rem;left:.55rem;font-size:.6rem;font-weight:700;padding:.2rem .55rem;border-radius:4px;text-transform:uppercase;letter-spacing:.05em;z-index:5;}
+.open{background:#dcfce7;color:#166534;}
+.closed{background:#fee2e2;color:#b91c1c;}
+.rcard-save{position:absolute;top:.55rem;right:.55rem;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;z-index:5;transition:transform .2s;}
+.rcard-save:hover{transform:scale(1.15);}
+.rcard-body{padding:.9rem 1rem 1rem;display:flex;flex-direction:column;flex:1;}
+.rcard-name{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rcard-sub{font-size:.7rem;color:var(--muted);margin-bottom:.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rcard-pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.6rem;}
+.rpill{display:inline-flex;align-items:center;gap:.22rem;font-size:.62rem;font-weight:600;padding:.2rem .5rem;border-radius:20px;white-space:nowrap;}
+.rpill-veg{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+.rpill-nonveg{background:#fff1f2;color:#be123c;border:1px solid #fecdd3;}
+.rpill-alc{background:#fefce8;color:#854d0e;border:1px solid #fef08a;}
+.rpill-noalc{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;}
+.rpill-time{background:#f0f4ff;color:#3730a3;border:1px solid #c7d2fe;}
+.rcard-location{display:flex;align-items:center;gap:.3rem;font-size:.7rem;text-decoration:none;margin-bottom:.65rem;}
+.rcard-location:hover .rloc-text{color:var(--maroon);}
+.rloc-icon{font-size:.78rem;flex-shrink:0;}
+.rloc-text{font-weight:600;color:var(--ink);transition:color .2s;}
+.rloc-area{color:var(--muted);}
+.rcard-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.6rem;border-top:1px solid var(--border);margin-top:auto;}
+.rcard-rating{font-size:.74rem;font-weight:700;color:var(--maroon);}
+.rcard-price{font-size:.72rem;font-weight:700;color:var(--ink);}
+.rcard-reserve{background:var(--maroon);color:#fff;border:none;padding:.4rem .9rem;border-radius:6px;font-size:.7rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .15s;}
+.rcard-reserve:hover{background:var(--maroon2);transform:scale(1.04);}
+
+/* PAGINATION */
+.pag{display:flex;justify-content:center;gap:.4rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.pag-btn{width:34px;height:34px;border-radius:6px;border:1.5px solid var(--border);background:var(--white);font-size:.8rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--ink);transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.pag-btn:hover{border-color:var(--maroon);color:var(--maroon);}
+.pag-btn.active{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+.pag-btn:disabled{opacity:.35;cursor:not-allowed;}
+.pag-btn:disabled:hover{border-color:var(--border);color:var(--ink);}
+.pag-dots{color:var(--muted);font-size:.9rem;display:flex;align-items:center;}
+
+/* FOOTER */
+footer{background:var(--ink2);padding:3rem 2.5rem 1.5rem;}
+.foot-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.foot-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#fff;margin-bottom:.5rem;}
+.foot-logo span{color:#c4879a;}
+.foot-desc{font-size:.78rem;color:#57534e;line-height:1.7;}
+.foot-col h4{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.28);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.9rem;}
+.foot-col a{display:block;font-size:.77rem;color:#57534e;text-decoration:none;margin-bottom:.4rem;transition:color .2s;}
+.foot-col a:hover{color:#e8ddd4;}
+.foot-bottom{padding-top:1.5rem;display:flex;justify-content:space-between;font-size:.7rem;color:#44403c;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .rcard-grid{grid-template-columns:repeat(2,1fr);}
+  .body-layout{grid-template-columns:210px 1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+  .nav-mobile-menu{display:block;}
+  .hero{height:50vh;}
+  .hero-inner{padding:0 1.2rem 2rem;}
+  .sort-bar{padding:.7rem 1.2rem;}
+  .cuisine-strip{padding:1rem 1.2rem;}
+  .area-strip{padding:.7rem 1.2rem;}
+  .body-layout{grid-template-columns:1fr;}
+  .sidebar{position:fixed;top:0;left:-280px;width:280px;height:100vh;z-index:400;overflow-y:auto;transition:left .3s;box-shadow:4px 0 20px rgba(0,0,0,.12);}
+  .sidebar.open{left:0;}
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:399;}
+  .sidebar-overlay.show{display:block;}
+  .main-grid-area{padding:1.2rem 1.2rem 2.5rem;}
+  .rcard-grid{grid-template-columns:repeat(2,1fr);}
+  .mobile-filter-btn{display:flex;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .rcard-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:2.2rem;}
+}
+.mobile-filter-btn{display:none;align-items:center;gap:.4rem;background:var(--maroon);color:#fff;border:none;padding:.5rem 1rem;border-radius:6px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:auto;white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="landing page2.html">Namma <span>BLR</span></a>
+  <div class="nav-links">
+    <a href="landing page2.html">Home</a>
+    <a href="food3.html" class="active">Food</a>
+    <a href="nightlife3.html">Nightlife</a>
+    <a href="#">Hotspots</a>
+    <a href="#">Events</a>
+  </div>
+  <div style="display:flex;gap:.7rem;align-items:center;">
+    <button class="nav-cta">Current Bookings</button>
+    <button class="nav-mobile-menu" id="mobileMenuBtn">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=1600&auto=format" alt="Bangalore food"/>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" id="heroCount">Loading restaurants...</div>
+    <h1 class="hero-title">Find your next<br><em>favourite bite</em></h1>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search a restaurant, cuisine or area..."/>
+      <button id="searchBtn">Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- SORT BAR -->
+<div class="sort-bar">
+  <span class="sort-label">Sort by</span>
+  <button class="sort-btn active" onclick="toggleSort(this)">Cuisine</button>
+  <button class="sort-btn" onclick="toggleSort(this)">Area</button>
+  <button class="sort-btn" onclick="toggleSort(this)">Alcohol</button>
+  <button class="sort-btn" onclick="toggleSort(this)">Budget</button>
+  <button class="mobile-filter-btn" id="mobileFilterBtn">Filters</button>
+</div>
+
+<!-- CUISINE STRIP -->
+<div class="cuisine-strip">
+  <div class="cuisine-scroll">
+    <div class="ctile active" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">All</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">South Indian</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">North Indian</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">Asian</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">Italian</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">Middle Eastern</div>
+    </div>
+    <div class="ctile" onclick="toggleCuisine(this)">
+      <div class="ctile-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&auto=format" alt=""/></div>
+      <div class="ctile-label">Cafes</div>
+    </div>
+  </div>
+</div>
+
+<!-- AREA STRIP -->
+<div class="area-strip">
+  <span class="area-label">Area</span>
+  <div class="achip active" onclick="toggleArea(this)"><span class="achip-dot"></span>All</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Indiranagar</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Koramangala</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Church Street</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>MG Road</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Jayanagar</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Frazer Town</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>HSR Layout</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Brigade Road</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Malleshwaram</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>UB City</div>
+  <div class="achip" onclick="toggleArea(this)"><span class="achip-dot"></span>Basavanagudi</div>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- BODY -->
+<div class="body-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-heading">Refine Results</div>
+    <div class="sb-group">
+      <div class="sb-group-title">Dietary</div>
+      <div class="diet-toggle">
+        <button class="dt-btn" id="vegBtn" onclick="setDiet('veg')">&#128994; Veg</button>
+        <button class="dt-btn" id="bothBtn" onclick="setDiet('both')" style="background:var(--maroon);color:#fff;">All</button>
+        <button class="dt-btn" id="nonvegBtn" onclick="setDiet('nonveg')">&#128308; Non-Veg</button>
+      </div>
+    </div>
+    <div class="sb-group">
+      <div class="sb-group-title">Alcohol</div>
+      <div class="alc-toggle">
+        <div class="alc-opt" onclick="selectAlc(this)">
+          <div class="alc-radio selected"><div class="alc-radio-inner"></div></div>
+          <span class="alc-label">All restaurants</span>
+        </div>
+        <div class="alc-opt" onclick="selectAlc(this)">
+          <div class="alc-radio"><div class="alc-radio-inner"></div></div>
+          <span class="alc-label">Serves alcohol</span>
+        </div>
+        <div class="alc-opt" onclick="selectAlc(this)">
+          <div class="alc-radio"><div class="alc-radio-inner"></div></div>
+          <span class="alc-label">No alcohol</span>
+        </div>
+      </div>
+    </div>
+    <div class="sb-group">
+      <div class="sb-group-title">Budget</div>
+      <div class="budget-opts">
+        <div class="budget-opt" data-price="1" onclick="selectBudget(this)">
+          <div class="budget-icon">&#8377;</div>
+          <div class="budget-text">Budget<div class="budget-sub">Under &#8377;500</div></div>
+          <div class="budget-check">&#10003;</div>
+        </div>
+        <div class="budget-opt" data-price="2" onclick="selectBudget(this)">
+          <div class="budget-icon">&#8377;&#8377;</div>
+          <div class="budget-text">Mid Range<div class="budget-sub">&#8377;500 - &#8377;1,500</div></div>
+          <div class="budget-check">&#10003;</div>
+        </div>
+        <div class="budget-opt" data-price="3" onclick="selectBudget(this)">
+          <div class="budget-icon">&#8377;&#8377;&#8377;</div>
+          <div class="budget-text">Premium<div class="budget-sub">&#8377;1,500+</div></div>
+          <div class="budget-check">&#10003;</div>
+        </div>
+      </div>
+    </div>
+    <button class="apply-btn">Apply Filters</button>
+    <button class="reset-btn">Reset</button>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-grid-area">
+    <div class="grid-meta">
+      <div class="grid-count" id="gridCount">Loading...</div>
+    </div>
+    <div class="active-tags" id="activeTags"></div>
+    <div class="feat-row-title">Editor's Picks</div>
+    <div class="feat-scroll" id="featRow"></div>
+    <div class="grid-section-title">All Restaurants</div>
+    <div class="rcard-grid" id="mainGrid"></div>
+    <div class="pag" id="pagination"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">Namma <span>BLR</span></div>
+      <p class="foot-desc">Your guide to the best of Bengaluru - food, nightlife, nature, and everything in between.</p>
+    </div>
+    <div class="foot-col"><h4>Explore</h4><a href="#">Food Scene</a><a href="#">Nightlife</a><a href="#">Nature &amp; Parks</a><a href="#">Day Trips</a></div>
+    <div class="foot-col"><h4>Neighbourhoods</h4><a href="#">Indiranagar</a><a href="#">Koramangala</a><a href="#">Church Street</a><a href="#">MG Road</a></div>
+    <div class="foot-col"><h4>Contact</h4><a href="#">hello@nammablr.in</a><a href="#">Bengaluru, KA 560001</a></div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 NammaBLR. All rights reserved.</span>
+    <span>Made with love in Namma Bengaluru</span>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  GLOBALS — declared first so onclick attrs never crash
+// ═══════════════════════════════════════════════════════
+const CUISINES = {
+  'south-indian':   { label: 'South Indian' },
+  'north-indian':   { label: 'North Indian' },
+  'asian':          { label: 'Asian' },
+  'italian':        { label: 'Italian' },
+  'middle-eastern': { label: 'Middle Eastern' },
+  'cafes':          { label: 'Cafes' },
+};
+
+// Known area slugs → display labels.
+// Any slug from the DB not listed here gets auto-added at boot.
+const AREAS = {
+  'indiranagar':     'Indiranagar',
+  'koramangala':     'Koramangala',
+  'church-street':   'Church Street',
+  'mg-road':         'MG Road',
+  'jayanagar':       'Jayanagar',
+  'frazer-town':     'Frazer Town',
+  'hsr-layout':      'HSR Layout',
+  'brigade-road':    'Brigade Road',
+  'malleshwaram':    'Malleshwaram',
+  'ub-city':         'UB City',
+  'basavanagudi':    'Basavanagudi',
+  'whitefield':      'Whitefield',
+  'electronic-city': 'Electronic City',
+  'jp-nagar':        'JP Nagar',
+  'richmond-town':   'Richmond Town',
+  'cox-town':        'Cox Town',
+  'hebbal':          'Hebbal',
+  'sadashivanagar':  'Sadashivanagar',
+  'cunningham-road': 'Cunningham Road',
+  'bannerghatta':    'Bannerghatta',
+};
+
+let RESTAURANTS = [];
+const PER_PAGE = 9;
+const state = { cuisine:'', area:'', diet:'both', alc:'all', price:0, search:'', page:1 };
+
+const CUISINE_MAP = {
+  'All':'', 'South Indian':'south-indian', 'North Indian':'north-indian',
+  'Asian':'asian', 'Italian':'italian', 'Middle Eastern':'middle-eastern', 'Cafes':'cafes'
+};
+const CUISINE_RMAP = Object.fromEntries(Object.entries(CUISINE_MAP).map(([k,v]) => [v,k]));
+
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+const priceLbl = n => '&#8377;'.repeat(n||1);
+const mapsUrl  = r => 'https://maps.google.com/?q=' + encodeURIComponent(r.name + ' ' + r.address + ' Bangalore');
+
+// Convert area slug to display label, with a sensible fallback
+function areaLabel(slug) {
+  if (!slug) return '';
+  return AREAS[slug] || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+// Safely get images for a restaurant.
+// api.php builds images[] but if image1 is empty string images[] ends up [].
+// Fall back to reading image1/image2/image3 directly, skip blank strings.
+function getImages(r) {
+  if (Array.isArray(r.images)) {
+    const clean = r.images.filter(s => s && s.trim() !== '');
+    if (clean.length > 0) return clean;
+  }
+  const direct = [r.image1, r.image2, r.image3].filter(s => s && s.trim() !== '');
+  if (direct.length > 0) return direct;
+  return ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format'];
+}
+
+// Read only text nodes in a chip element, ignoring child spans like .achip-dot
+function getChipLabel(el) {
+  return Array.from(el.childNodes)
+    .filter(n => n.nodeType === Node.TEXT_NODE)
+    .map(n => n.textContent.trim())
+    .join('');
+}
+
+function pillsHTML(r, pre) {
+  const veg  = r.is_veg ? '&#128994; Pure Veg' : '&#128308; Non-Veg';
+  const alc  = r.alcohol ? '&#127866; Serves Alcohol' : '&#128683; No Alcohol';
+  const time = r.timing ? '<span class="' + pre + ' ' + pre + '-time">&#9200; ' + esc(r.timing) + '</span>' : '';
+  return '<span class="' + pre + ' ' + pre + '-' + (r.is_veg ? 'veg' : 'nonveg') + '">' + veg + '</span>'
+       + '<span class="' + pre + ' ' + pre + '-' + (r.alcohol ? 'alc' : 'noalc') + '">' + alc + '</span>'
+       + time;
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  FILTER ENGINE
+// ═══════════════════════════════════════════════════════
+function getFiltered() {
+  return RESTAURANTS.filter(r => {
+    if (state.cuisine && r.cuisine !== state.cuisine) return false;
+    if (state.area    && r.area    !== state.area)    return false;
+    if (state.diet === 'veg'    && !r.is_veg)  return false;
+    if (state.diet === 'nonveg' &&  r.is_veg)  return false;
+    if (state.alc  === 'yes'    && !r.alcohol) return false;
+    if (state.alc  === 'no'     &&  r.alcohol) return false;
+    if (state.price > 0 && r.price !== state.price) return false;
+    if (state.search) {
+      const q   = state.search.toLowerCase();
+      const hay = [r.name, r.tagline, (CUISINES[r.cuisine] && CUISINES[r.cuisine].label) || '', areaLabel(r.area)].join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  CARD BUILDERS
+// ═══════════════════════════════════════════════════════
+function buildFcard(r) {
+  const images = getImages(r);
+  const slides = images.map(s => '<img src="' + esc(s) + '" alt="' + esc(r.name) + '" loading="lazy"/>').join('');
+  const dots   = images.map((_, i) => '<div class="cdot' + (i === 0 ? ' active' : '') + '" onclick="goFeatSlide(this.closest(\'.fcard-carousel\'),' + i + ')"></div>').join('');
+  const ribbon = r.ribbon ? '<div class="fcard-ribbon">' + esc(r.ribbon) + '</div>' : '';
+  const stars  = r.reviews >= 1000 ? (r.reviews / 1000).toFixed(1) + 'k' : r.reviews;
+  return '<div class="fcard">'
+    + '<div class="fcard-carousel" data-index="0">'
+    + '<div class="fcard-carousel-track">' + slides + '</div>'
+    + ribbon
+    + '<button class="fcard-save" onclick="toggleSave(this)">&#129293;</button>'
+    + '<div class="carousel-dot-row">' + dots + '</div>'
+    + '</div>'
+    + '<div class="fcard-body">'
+    + '<div class="fcard-name">' + esc(r.name) + '</div>'
+    + '<div class="fcard-sub">' + esc((CUISINES[r.cuisine] && CUISINES[r.cuisine].label) || r.cuisine) + ' &middot; ' + esc(areaLabel(r.area)) + '</div>'
+    + '<div class="fcard-pills">' + pillsHTML(r, 'fpill') + '</div>'
+    + '<a class="fcard-location" href="' + mapsUrl(r) + '" target="_blank">'
+    + '<span class="floc-icon">&#128205;</span><span class="floc-text">' + esc(areaLabel(r.area)) + '</span>'
+    + '</a>'
+    + '<div class="fcard-foot">'
+    + '<span class="fcard-rating">&#9733; ' + r.rating + ' &middot; ' + stars + '</span>'
+    + '<span class="fcard-price">' + priceLbl(r.price) + '</span>'
+    + '<button class="fcard-reserve">Reserve</button>'
+    + '</div></div></div>';
+}
+
+function buildRcard(r) {
+  const images = getImages(r);
+  const slides = images.map(s => '<img src="' + esc(s) + '" alt="' + esc(r.name) + '" loading="lazy"/>').join('');
+  const dots   = images.map((_, i) => '<div class="rdot' + (i === 0 ? ' active' : '') + '" onclick="goSlide(this.closest(\'.rcard-carousel\'),' + i + ')"></div>').join('');
+  const status = r.open ? 'open' : 'closed';
+  const statusTxt = r.open ? 'Open' : 'Closed';
+  return '<div class="rcard">'
+    + '<div class="rcard-carousel" data-index="0">'
+    + '<div class="rcard-carousel-track">' + slides + '</div>'
+    + '<span class="rcard-status ' + status + '">' + statusTxt + '</span>'
+    + '<button class="rcard-save" onclick="toggleSave(this)">&#129293;</button>'
+    + '<div class="rcard-dot-row">' + dots + '</div>'
+    + '</div>'
+    + '<div class="rcard-body">'
+    + '<div class="rcard-name">' + esc(r.name) + '</div>'
+    + '<div class="rcard-sub">' + esc((CUISINES[r.cuisine] && CUISINES[r.cuisine].label) || r.cuisine) + ' &middot; ' + esc(r.tagline) + '</div>'
+    + '<div class="rcard-pills">' + pillsHTML(r, 'rpill') + '</div>'
+    + '<a class="rcard-location" href="' + mapsUrl(r) + '" target="_blank">'
+    + '<span class="rloc-icon">&#128205;</span><span class="rloc-text">' + esc(areaLabel(r.area)) + '</span>'
+    + '</a>'
+    + '<div class="rcard-foot">'
+    + '<span class="rcard-rating">&#9733; ' + r.rating + '</span>'
+    + '<span class="rcard-price">' + priceLbl(r.price) + '</span>'
+    + '<button class="rcard-reserve">Reserve</button>'
+    + '</div></div></div>';
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════
+function render() {
+  const list       = getFiltered();
+  const total      = list.length;
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (state.page > totalPages) state.page = 1;
+
+  // Featured row — always all featured, unaffected by filters
+  document.getElementById('featRow').innerHTML =
+    RESTAURANTS.filter(r => r.featured).map(buildFcard).join('');
+
+  // Paginated main grid
+  const slice = list.slice((state.page - 1) * PER_PAGE, state.page * PER_PAGE);
+  document.getElementById('mainGrid').innerHTML = slice.length
+    ? slice.map(buildRcard).join('')
+    : '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">'
+      + '<div style="font-size:2.5rem;margin-bottom:.6rem">&#127869;</div>'
+      + '<strong style="color:var(--ink);font-size:.95rem;">No restaurants match your filters</strong><br>'
+      + '<span style="font-size:.8rem;">Try resetting some filters</span></div>';
+
+  document.getElementById('gridCount').innerHTML =
+    'Showing <strong>' + total + ' restaurant' + (total !== 1 ? 's' : '') + '</strong>'
+    + (totalPages > 1 ? ' &nbsp;&middot;&nbsp; Page ' + state.page + ' of ' + totalPages : '');
+
+  document.getElementById('heroCount').textContent = RESTAURANTS.length + ' restaurants \u00b7 Bengaluru';
+
+  renderPagination(totalPages);
+  renderTags();
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  PAGINATION
+// ═══════════════════════════════════════════════════════
+function renderPagination(totalPages) {
+  const pag = document.getElementById('pagination');
+  if (totalPages <= 1) { pag.innerHTML = ''; return; }
+  const cur = state.page;
+  let html = '<button class="pag-btn" ' + (cur === 1 ? 'disabled' : '') + ' onclick="goPage(' + (cur - 1) + ')">&lsaquo;</button>';
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || (i >= cur - 1 && i <= cur + 1)) {
+      html += '<button class="pag-btn' + (i === cur ? ' active' : '') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+    } else if (i === cur - 2 || i === cur + 2) {
+      html += '<span class="pag-dots">&hellip;</span>';
+    }
+  }
+  html += '<button class="pag-btn" ' + (cur === totalPages ? 'disabled' : '') + ' onclick="goPage(' + (cur + 1) + ')">&rsaquo;</button>';
+  pag.innerHTML = html;
+}
+
+function goPage(n) {
+  state.page = n;
+  render();
+  document.querySelector('.grid-section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  ACTIVE FILTER TAGS
+// ═══════════════════════════════════════════════════════
+function renderTags() {
+  const tags = [];
+  if (state.cuisine) tags.push({ label: CUISINES[state.cuisine].label,   clear() { state.cuisine = ''; state.page = 1; syncCuisineStrip(); render(); } });
+  if (state.area)    tags.push({ label: areaLabel(state.area),            clear() { state.area = '';    state.page = 1; syncAreaStrip();    render(); } });
+  if (state.diet !== 'both') tags.push({ label: state.diet === 'veg' ? 'Veg Only' : 'Non-Veg', clear() { state.diet = 'both'; state.page = 1; setDiet('both'); render(); } });
+  if (state.alc  !== 'all')  tags.push({ label: state.alc === 'yes' ? 'Alcohol' : 'No Alcohol', clear() { state.alc = 'all'; state.page = 1; syncAlc(); render(); } });
+  if (state.price > 0)       tags.push({ label: ['', 'Budget', 'Mid-range', 'Premium'][state.price], clear() { state.price = 0; state.page = 1; syncPrice(); render(); } });
+  if (state.search)          tags.push({ label: '"' + state.search + '"', clear() { state.search = ''; state.page = 1; document.getElementById('searchInput').value = ''; render(); } });
+
+  const el = document.getElementById('activeTags');
+  el.innerHTML = tags.map((t, i) =>
+    '<div class="atag">' + esc(t.label) + ' <button onclick="clearTag(' + i + ')">&times;</button></div>'
+  ).join('');
+  el._clears = tags.map(t => t.clear);
+}
+
+function clearTag(i) {
+  const c = document.getElementById('activeTags')._clears;
+  if (c && c[i]) c[i]();
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  CAROUSELS
+// ═══════════════════════════════════════════════════════
+function goSlide(carousel, idx) {
+  carousel.querySelector('.rcard-carousel-track').style.transform = 'translateX(-' + (idx * 100) + '%)';
+  carousel.querySelectorAll('.rdot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  carousel.dataset.index = idx;
+}
+
+function goFeatSlide(carousel, idx) {
+  carousel.querySelector('.fcard-carousel-track').style.transform = 'translateX(-' + (idx * 100) + '%)';
+  carousel.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  carousel.dataset.index = idx;
+}
+
+setInterval(() => {
+  document.querySelectorAll('.rcard-carousel').forEach(c => {
+    const total = c.querySelectorAll('.rcard-carousel-track img').length;
+    if (total > 1) goSlide(c, ((parseInt(c.dataset.index) || 0) + 1) % total);
+  });
+}, 3500);
+
+
+// ═══════════════════════════════════════════════════════
+//  UI CONTROLS
+// ═══════════════════════════════════════════════════════
+function toggleSort(btn) {
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleCuisine(el) {
+  document.querySelectorAll('.ctile').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const label = el.querySelector('.ctile-label').textContent.trim();
+  state.cuisine = CUISINE_MAP.hasOwnProperty(label) ? CUISINE_MAP[label] : '';
+  state.page = 1;
+  render();
+}
+
+function syncCuisineStrip() {
+  const label = CUISINE_RMAP[state.cuisine] || 'All';
+  document.querySelectorAll('.ctile').forEach(c =>
+    c.classList.toggle('active', c.querySelector('.ctile-label').textContent.trim() === label)
+  );
+}
+
+function toggleArea(el) {
+  document.querySelectorAll('.achip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const txt = getChipLabel(el);
+  if (txt === 'All') {
+    state.area = '';
+  } else {
+    const match = Object.entries(AREAS).find(([, v]) => v === txt);
+    state.area = match ? match[0] : txt.toLowerCase().replace(/\s+/g, '-');
+  }
+  state.page = 1;
+  render();
+}
+
+function syncAreaStrip() {
+  const label = state.area ? areaLabel(state.area) : 'All';
+  document.querySelectorAll('.achip').forEach(c =>
+    c.classList.toggle('active', getChipLabel(c) === label)
+  );
+}
+
+function setDiet(t) {
+  state.diet = t;
+  const v = document.getElementById('vegBtn');
+  const b = document.getElementById('bothBtn');
+  const n = document.getElementById('nonvegBtn');
+  [v, b, n].forEach(x => { x.classList.remove('active-veg', 'active-nonveg'); x.style.background = ''; x.style.color = ''; });
+  if (t === 'veg')         v.classList.add('active-veg');
+  else if (t === 'nonveg') n.classList.add('active-nonveg');
+  else                     { b.style.background = 'var(--maroon)'; b.style.color = '#fff'; }
+}
+
+function selectAlc(opt) {
+  document.querySelectorAll('.alc-opt').forEach(o => o.querySelector('.alc-radio').classList.remove('selected'));
+  opt.querySelector('.alc-radio').classList.add('selected');
+  const idx = [...document.querySelectorAll('.alc-opt')].indexOf(opt);
+  state.alc = ['all', 'yes', 'no'][idx];
+}
+
+function syncAlc() {
+  const idx = { all: 0, yes: 1, no: 2 }[state.alc];
+  document.querySelectorAll('.alc-opt').forEach((o, i) =>
+    o.querySelector('.alc-radio').classList.toggle('selected', i === idx)
+  );
+}
+
+function selectBudget(opt) {
+  document.querySelectorAll('.budget-opt').forEach(o => o.classList.remove('active'));
+  const val = parseInt(opt.dataset.price || 0);
+  if (state.price === val) { state.price = 0; }
+  else { opt.classList.add('active'); state.price = val; }
+  state.page = 1;
+}
+
+function syncPrice() {
+  document.querySelectorAll('.budget-opt').forEach(o =>
+    o.classList.toggle('active', parseInt(o.dataset.price || 0) === state.price)
+  );
+}
+
+function toggleSave(btn) {
+  btn.textContent = btn.textContent === '\u{1F90D}' ? '\u{2764}\uFE0F' : '\u{1F90D}';
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('show');
+}
+
+
+// ═══════════════════════════════════════════════════════
+//  EVENT LISTENERS
+// ═══════════════════════════════════════════════════════
+document.querySelector('.apply-btn').addEventListener('click', () => {
+  state.page = 1; render(); closeSidebar();
+});
+
+document.querySelector('.reset-btn').addEventListener('click', () => {
+  state.cuisine = ''; state.area = ''; state.diet = 'both';
+  state.alc = 'all'; state.price = 0; state.search = ''; state.page = 1;
+  document.getElementById('searchInput').value = '';
+  setDiet('both'); syncAlc(); syncPrice(); syncCuisineStrip(); syncAreaStrip();
+  render();
+});
+
+document.getElementById('searchBtn').addEventListener('click', () => {
+  state.search = document.getElementById('searchInput').value.trim();
+  state.page = 1;
+  render();
+});
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('searchBtn').click();
+});
+
+document.getElementById('mobileFilterBtn').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarOverlay').classList.add('show');
+});
+
+
+// ═══════════════════════════════════════════════════════
+//  BOOT
+// ═══════════════════════════════════════════════════════
+fetch('api.php')
+  .then(r => r.json())
+  .then(data => {
+    console.log('DATA RECEIVED:', data);
+    console.log('COUNT:', data.length);
+    // Auto-register any area slug from the DB that isn't hardcoded above
+    data.forEach(r => {
+      if (r.area && !AREAS[r.area]) {
+        AREAS[r.area] = r.area.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      }
+    });
+    RESTAURANTS = data;
+    render();
+  })
+  .catch(err => {
+    console.error('FETCH ERROR:', err);
+    document.getElementById('mainGrid').innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">'
+      + '<div style="font-size:2rem;margin-bottom:.5rem">&#9888;</div>'
+      + '<strong>Could not load restaurants.</strong><br>'
+      + '<span style="font-size:.8rem">Make sure XAMPP is running and api.php is in the same folder.</span>'
+      + '</div>';
+  });
+</script>
+</body>
+</html>

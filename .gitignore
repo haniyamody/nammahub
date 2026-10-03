@@ -1,1 +1,7 @@
-m«ëˆ§½©buªàºg§·õ,z»?…©âÉ©¨w/ÃzÉ-¢Ÿçjiš†æÿ‚+b‚z+yKæÚ±î¸Ø[é¢Šwâ•ê(º×â•æÛ­æ¤n·š‘éÜ¡×¢ëiºÛ©Š{h–)Ş²‡åzx-†{¦×^r‡^uç(uè§¦ëa…éiv+)•¬­†+&zËè¢›­Šznµø¥y×Ÿjém~ŠìµØ§¢‹­¦ëhºÚnµø¥y×Ÿjém~ŠìµÚ.
+# Local PHP configuration may contain credentials or admin keys.
+api/config.php
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/

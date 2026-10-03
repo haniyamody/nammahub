@@ -1,1 +1,720 @@
-m´ÎàßΩ©bu™‡∫gß∑ı,zª?Ö©‚…©®w/√z…-¢üÁjiöÜÊˇ≤('∫òmöU,jõj«∫‡7an{¶ä)ﬂäW®¢Î_äWõn∑öë∫ﬁjGßrá^vã≠¶În¶)Ì¢Xßz ïÈ‡∂Óò7]y y◊ú°◊¢ûõ≠Ü••ÿ¨¶V≤∂¨ôÎ,j¢äzn∂)È∫◊‚ïÁ^}´•µ˙+≤◊bûä.∂õ≠¢Îi∫◊‚ïÁ^}´•µ˙+≤◊h∫
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up ‚Äì Namma BLR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B2B;
+            --orange-soft: #FF8C52;
+            --gold: #C9A84C;
+            --cream: #F5EDD8;
+            --dark: #0E0C0A;
+            --dark2: #1A1612;
+            --glass-border: rgba(255,255,255,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* ‚îÄ‚îÄ BG IMAGE SIDE ‚îÄ‚îÄ */
+        .bg-panel {
+            position: relative;
+            width: 55%;
+            overflow: hidden;
+        }
+
+        .bg-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://s7ap1.scene7.com/is/image/incredibleindia/nandi-hills-bangalore-karnataka-attr-about?qlt=82') center/cover no-repeat;
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1.05); }
+            to   { transform: scale(1.12); }
+        }
+
+        .bg-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                rgba(14,12,10,0.15) 0%,
+                rgba(14,12,10,0.4) 60%,
+                rgba(14,12,10,0.92) 100%
+            );
+        }
+
+        .bg-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 56px 52px;
+        }
+
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,107,43,0.18);
+            border: 1px solid rgba(255,107,43,0.35);
+            border-radius: 100px;
+            padding: 6px 16px;
+            margin-bottom: 28px;
+            width: fit-content;
+        }
+
+        .brand-tag .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--orange);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        .brand-tag span {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange-soft);
+        }
+
+        .bg-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 5vw, 68px);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+
+        .bg-content h1 em {
+            font-style: italic;
+            color: var(--orange);
+        }
+
+        .bg-content p {
+            font-size: 15px;
+            color: rgba(245,237,216,0.6);
+            line-height: 1.7;
+            max-width: 340px;
+            font-weight: 300;
+        }
+
+        .divider-line {
+            width: 48px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+
+        .perks {
+            list-style: none;
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .perks li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: rgba(245,237,216,0.55);
+            font-weight: 300;
+        }
+
+        .perks li .icon {
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,107,43,0.15);
+            border: 1px solid rgba(255,107,43,0.25);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* ‚îÄ‚îÄ FORM SIDE ‚îÄ‚îÄ */
+        .form-panel {
+            width: 45%;
+            background: var(--dark2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .form-panel::after {
+            content: '';
+            position: absolute;
+            top: -120px; right: -80px;
+            width: 340px; height: 340px;
+            background: radial-gradient(circle, rgba(255,107,43,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-wrap {
+            width: 100%;
+            max-width: 340px;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 22px;
+            letter-spacing: -0.3px;
+        }
+
+        .form-logo span { color: var(--orange); }
+
+        .form-wrap h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+
+        .form-wrap .sub {
+            font-size: 13px;
+            color: rgba(245,237,216,0.4);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* toggle admin/user */
+        .toggle-group {
+            display: flex;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 20px;
+            gap: 4px;
+        }
+
+        .toggle-group button {
+            flex: 1;
+            padding: 9px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            background: transparent;
+            color: rgba(245,237,216,0.4);
+            transition: all 0.25s;
+        }
+
+        .toggle-group button.active {
+            background: var(--orange);
+            color: white;
+        }
+
+        /* name row */
+        .name-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .name-row .field { flex: 1; }
+
+        .field {
+            margin-bottom: 13px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(245,237,216,0.4);
+            margin-bottom: 6px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 11px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            color: var(--cream);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .field input::placeholder { color: rgba(245,237,216,0.18); }
+
+        .field input:focus {
+            border-color: var(--orange);
+            background: rgba(255,107,43,0.06);
+        }
+
+        /* password strength bar */
+        .strength-bar {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .strength-bar .seg {
+            flex: 1;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.08);
+            transition: background 0.3s;
+        }
+
+        .strength-label {
+            font-size: 10px;
+            color: rgba(245,237,216,0.3);
+            margin-top: 4px;
+            min-height: 13px;
+            transition: color 0.3s;
+        }
+
+        .field .error {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            color: #ff6b6b;
+            min-height: 13px;
+        }
+
+        .match-indicator {
+            font-size: 11px;
+            margin-top: 4px;
+            min-height: 13px;
+        }
+
+        /* admin key field ‚Äì hidden by default */
+        #adminKeyField { display: none; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            background: var(--orange);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.2s, transform 0.15s;
+            margin-top: 4px;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .submit-btn:hover { background: var(--orange-soft); transform: translateY(-1px); }
+        .submit-btn:hover::after { transform: translateX(100%); }
+        .submit-btn:active { transform: translateY(0); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* success overlay */
+        .success-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(14,12,10,0.92);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .success-overlay.show { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .success-icon {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: rgba(255,107,43,0.15);
+            border: 2px solid var(--orange);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+            animation: scaleIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to   { transform: scale(1); }
+        }
+
+        .success-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--cream);
+        }
+
+        .success-overlay p {
+            font-size: 14px;
+            color: rgba(245,237,216,0.5);
+        }
+
+        .bottom-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+
+        .bottom-links a, .bottom-links p {
+            font-size: 12px;
+            color: rgba(245,237,216,0.35);
+            text-decoration: none;
+        }
+
+        .bottom-links a span { color: var(--orange); font-weight: 500; }
+        .bottom-links a:hover span { text-decoration: underline; }
+
+        .city-strip {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--orange), transparent);
+        }
+
+        /* global error banner */
+        .banner {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            display: none;
+        }
+        .banner.error { background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.3); color: #ff8a8a; display: block; }
+        .banner.success { background: rgba(80,200,120,0.12); border: 1px solid rgba(80,200,120,0.3); color: #6ee08a; display: block; }
+    </style>
+</head>
+<body>
+
+<!-- LEFT: BG IMAGE -->
+<div class="bg-panel">
+    <div class="bg-content">
+        <div class="brand-tag">
+            <div class="dot"></div>
+            <span>Namma BLR</span>
+        </div>
+        <h1>Join the<br><em>BLR Tribe.</em></h1>
+        <div class="divider-line"></div>
+        <p>Create your account and unlock the full Bengaluru experience.</p>
+
+        <ul class="perks">
+            <li>
+                <div class="icon">üçΩÔ∏è</div>
+                Reserve tables at top BLR restaurants
+            </li>
+            <li>
+                <div class="icon">üåô</div>
+                Book tickets to exclusive nightlife events
+            </li>
+            <li>
+                <div class="icon">üìç</div>
+                Save & track your favourite hotspots
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- RIGHT: FORM -->
+<div class="form-panel">
+    <div class="form-wrap">
+
+        <div class="form-logo">Namma<span>BLR</span></div>
+
+        <h2 id="formTitle">Create account</h2>
+        <p class="sub" id="formSub">It's free and takes less than a minute</p>
+
+        <!-- Admin / User toggle -->
+        <div class="toggle-group">
+            <button id="adminBtn" onclick="switchMode('admin')">Admin</button>
+            <button class="active" id="userBtn" onclick="switchMode('user')">User</button>
+        </div>
+
+        <div class="banner" id="banner"></div>
+
+        <form id="signupForm">
+
+            <!-- Name row -->
+            <div class="name-row">
+                <div class="field">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" placeholder="Riya">
+                    <small class="error" id="firstNameError"></small>
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" placeholder="Sharma">
+                    <small class="error" id="lastNameError"></small>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com">
+                <small class="error" id="emailError"></small>
+            </div>
+
+            <div class="field" id="adminKeyField">
+                <label>Admin Secret Key</label>
+                <input type="password" id="adminKey" placeholder="Enter admin key">
+                <small class="error" id="adminKeyError"></small>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢">
+                <div class="strength-bar">
+                    <div class="seg" id="s1"></div>
+                    <div class="seg" id="s2"></div>
+                    <div class="seg" id="s3"></div>
+                    <div class="seg" id="s4"></div>
+                </div>
+                <div class="strength-label" id="strengthLabel"></div>
+                <small class="error" id="passwordError"></small>
+            </div>
+
+            <div class="field">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢‚Ä¢">
+                <div class="match-indicator" id="matchIndicator"></div>
+                <small class="error" id="confirmError"></small>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Create My Account</button>
+
+        </form>
+
+        <div class="bottom-links">
+            <a href="login2.html">Already have an account? <span>Sign in</span></a>
+            <a href="landing page2.html">‚Üê Home</a>
+        </div>
+
+    </div>
+    <div class="city-strip"></div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+    <div class="success-icon">‚úì</div>
+    <h3>Account Created!</h3>
+    <p id="successMsg">Redirecting you to sign in‚Ä¶</p>
+</div>
+
+<script>
+    let currentMode = 'user';
+
+    function switchMode(mode) {
+        currentMode = mode;
+        document.getElementById('adminBtn').classList.toggle('active', mode === 'admin');
+        document.getElementById('userBtn').classList.toggle('active', mode === 'user');
+        document.getElementById('adminKeyField').style.display = mode === 'admin' ? 'block' : 'none';
+        document.getElementById('formTitle').textContent = mode === 'admin' ? 'Admin Sign Up' : 'Create account';
+        document.getElementById('formSub').textContent = mode === 'admin'
+            ? 'Register a new admin account'
+            : 'It\'s free and takes less than a minute';
+        clearErrors();
+    }
+
+    function clearErrors() {
+        ['firstNameError','lastNameError','emailError','adminKeyError','passwordError','confirmError'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = '';
+        });
+        hideBanner();
+    }
+
+    function showBanner(msg, type) {
+        const b = document.getElementById('banner');
+        b.textContent = msg;
+        b.className = 'banner ' + type;
+    }
+
+    function hideBanner() {
+        const b = document.getElementById('banner');
+        b.className = 'banner';
+    }
+
+    // Password strength
+    document.getElementById('password').addEventListener('input', function () {
+        const val = this.value;
+        let score = 0;
+        if (val.length >= 8) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+
+        const colors = ['', '#ff4444', '#ff8c00', '#ffd700', '#4caf50'];
+        const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+        const labelColors = ['', '#ff6b6b', '#ff8c52', '#C9A84C', '#6ee08a'];
+
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById('s' + i).style.background =
+                i <= score ? colors[score] : 'rgba(255,255,255,0.08)';
+        }
+        const lbl = document.getElementById('strengthLabel');
+        lbl.textContent = val ? labels[score] || 'Very Weak' : '';
+        lbl.style.color = val ? (labelColors[score] || '#ff6b6b') : 'rgba(245,237,216,0.3)';
+    });
+
+    // Confirm password match
+    document.getElementById('confirmPassword').addEventListener('input', function () {
+        const pw = document.getElementById('password').value;
+        const ind = document.getElementById('matchIndicator');
+        if (!this.value) { ind.textContent = ''; return; }
+        if (this.value === pw) {
+            ind.textContent = '‚úì Passwords match';
+            ind.style.color = '#6ee08a';
+        } else {
+            ind.textContent = '‚úó Passwords do not match';
+            ind.style.color = '#ff6b6b';
+        }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        clearErrors();
+
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName  = document.getElementById('lastName').value.trim();
+        const email     = document.getElementById('email').value.trim();
+        const password  = document.getElementById('password').value;
+        const confirm   = document.getElementById('confirmPassword').value;
+        const adminKey  = document.getElementById('adminKey').value;
+
+        let valid = true;
+
+        if (!firstName) {
+            document.getElementById('firstNameError').textContent = 'First name is required.';
+            valid = false;
+        }
+        if (!lastName) {
+            document.getElementById('lastNameError').textContent = 'Last name is required.';
+            valid = false;
+        }
+        if (!/^[^\s]+@[^\s]+\.[a-z]{2,}$/.test(email)) {
+            document.getElementById('emailError').textContent = 'Enter a valid email address.';
+            valid = false;
+        }
+        if (currentMode === 'admin' && !adminKey) {
+            document.getElementById('adminKeyError').textContent = 'Admin key is required.';
+            valid = false;
+        }
+        if (password.length < 8) {
+            document.getElementById('passwordError').textContent = 'Password must be at least 8 characters.';
+            valid = false;
+        }
+        if (password !== confirm) {
+            document.getElementById('confirmError').textContent = 'Passwords do not match.';
+            valid = false;
+        }
+        if (!valid) return;
+
+        const btn = document.getElementById('submitBtn');
+        btn.textContent = 'Creating account‚Ä¶';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('http://localhost/NammaHub/api/signup.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firstName, lastName, email, password, role: currentMode, adminKey })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                showBanner(data.error || 'Something went wrong.', 'error');
+                btn.textContent = 'Create My Account';
+                btn.disabled = false;
+                return;
+            }
+
+            // Show success overlay then redirect
+            document.getElementById('successMsg').textContent =
+                currentMode === 'admin'
+                    ? 'Admin account created. Redirecting to sign in‚Ä¶'
+                    : 'Welcome to NammaBLR! Redirecting to sign in‚Ä¶';
+            document.getElementById('successOverlay').classList.add('show');
+
+            setTimeout(() => {
+                window.location.href = 'login2.html';
+            }, 2200);
+
+        } catch (err) {
+            showBanner('Server unreachable. Is XAMPP running?', 'error');
+            btn.textContent = 'Create My Account';
+            btn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>

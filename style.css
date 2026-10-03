@@ -1,1 +1,153 @@
-m«ëˆ§½©buªàºg§·õ,z»?…©âÉ©¨w/ÃzÉ-¢Ÿçjiš†æÿ²Ü¥yË,RÆ y¶¬{®vçºh¢ø¥zŠ.µø¥y¶ëy©­æ¤zw(uçhºÚn¶êbÚ%Šw¬¡ù^aéƒu×œ¡×yÊz)éºØazZ]ŠÊek+aŠÉ²Æ z(§¦ëb›­~)^uçÚº[_¢»-v)è¢ëiºÚ.¶›­~)^uçÚº[_¢»-v‹­
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #485b58, #6eb5ac);
+  min-height: 100vh;
+  color: white;
+}
+
+/* Navbar */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 8%;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.moon {
+  cursor: pointer;
+}
+
+/* Hero Section */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 8%;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-left h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  max-width: 400px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.hero-left button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-left button:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* Slider */
+
+.hero-right {
+  flex: 1;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.slider {
+  position: relative;
+  width: 600%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: 650px;
+}
+
+.arrows {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.arrows button {
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 8px 12px;
+  margin-left: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media(max-width: 900px){
+  .hero-left h1{
+    font-size: 48px;
+  }
+}
+
+@media(max-width: 768px){
+  .hero{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-left{
+    margin-bottom: 40px;
+  }
+
+  .hero-left p{
+    margin: 0 auto 30px;
+  }
+}

@@ -1,1 +1,1210 @@
-m�눧��bu��g���,z�?���ɩ�w/�z�-���ji������l��l�f�K��ڱ��[�颊w��(����ۭ�n����ܡם��i�۩�{h�)޲��zx-�{��^r�^u�(u触�a��iv+)����+&z��袞���zn���yןj�m~��ا�����h��n���yןj�m~���.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wander & Wonder — Namma BLR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink: #0f0d0b;
+  --ink2: #1c1917;
+  --cream: #f7f3ee;
+  --warm: #ede7df;
+  --stone: #d6cdc3;
+  --muted: #8a7e74;
+  --blue: #4a90c4;
+  --blue-light: #7eb8e8;
+  --blue-pale: #dde6f0;
+  --blue-dim: #1a2f45;
+  --slate: #b8cedd;
+  --page-bg:    #0e1410;
+  --panel-bg:   #141a12;
+  --surface:    #1c2419;
+  --surface2:   #243020;
+  --rule:       rgba(255,255,255,.07);
+  --rule-green: rgba(120,180,140,.15);
+  --sage:       #8fbfa0;
+  --sage-dim:   #4a7a5a;
+  --sage-pale:  #c8dfd0;
+  --blue-h:     #5aabdc;
+  --blue-pale-h:#c5e4f5;
+  --cream-h:    #e8e2d8;
+  --muted-h:    #6a8070;
+  --ink-h:      #0e1410;
+  /* admin accent */
+  --admin:      #FF6B2B;
+  --admin-soft: #FF8C52;
+  --admin-dim:  rgba(255,107,43,.12);
+  --admin-border: rgba(255,107,43,.25);
+}
+html{scroll-behavior:smooth;}
+body{ background:var(--page-bg); color:var(--cream-h); font-family:'DM Sans',sans-serif; overflow-x:hidden; cursor:none; }
+
+/* ── CURSOR ── */
+.cursor{ width:10px;height:10px;border-radius:50%;background:var(--blue-h);position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply; }
+.cursor-ring{ width:36px;height:36px;border-radius:50%;border:1.5px solid var(--blue-light);position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .22s ease;opacity:.5; }
+
+/* ── NAV ── */
+nav{ position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:rgba(14,20,16,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule); }
+.nav-logo{ font-family:'Fraunces',serif;font-size:1.15rem;font-weight:900;color:var(--cream-h);letter-spacing:-.02em; }
+.nav-logo span{ color:var(--blue-h); }
+.nav-links{ display:flex;gap:2rem;align-items:center; }
+.nav-links a{ color:var(--muted-h);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s; }
+.nav-links a:hover{ color:var(--cream-h); }
+.nav-right{ display:flex;gap:.8rem;align-items:center; }
+.nav-back{ background:var(--surface);color:var(--cream-h);padding:.5rem 1.2rem;border-radius:50px;font-size:.75rem;font-weight:600;text-decoration:none;transition:all .2s;border:1px solid var(--rule); }
+.nav-back:hover{ background:var(--surface2); }
+
+/* admin badge in nav */
+.nav-admin-badge{ display:none;align-items:center;gap:.5rem;background:var(--admin-dim);border:1px solid var(--admin-border);border-radius:50px;padding:.4rem 1rem;font-size:.7rem;font-weight:700;color:var(--admin-soft);letter-spacing:.05em; }
+.nav-admin-badge .dot{ width:6px;height:6px;border-radius:50%;background:var(--admin);animation:pulse 2s infinite; }
+@keyframes pulse{ 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.5);} }
+body.is-admin .nav-admin-badge{ display:flex; }
+
+/* ── FILTER BAR ── */
+.filter-bar{ position:sticky;top:62px;z-index:150;background:rgba(14,20,16,.97);border-bottom:1px solid var(--rule);padding:.7rem 4rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap; }
+.filter-label{ font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-h);margin-right:.4rem; }
+.ftab{ color:var(--muted-h);border:1.5px solid rgba(255,255,255,.08);border-radius:50px;padding:.4rem 1.1rem;font-size:.75rem;font-weight:600;background:transparent;font-family:'DM Sans',sans-serif;cursor:none;transition:all .22s;white-space:nowrap; }
+.ftab:hover{ border-color:var(--blue-h);color:var(--blue-h); }
+.ftab.active{ background:var(--blue-dim);border-color:var(--blue-dim);color:#fff;box-shadow:0 3px 14px rgba(26,47,69,.25); }
+
+/* ── HERO ── */
+.hero{ position:relative;min-height:520px;height:58vh;max-height:600px;margin-top:62px;background:var(--page-bg);overflow:hidden;display:flex;align-items:stretch; }
+.hero-ghost-text{ position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fraunces',serif;font-size:clamp(9rem,22vw,22rem);font-weight:900;letter-spacing:-.05em;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(120,180,140,.07);pointer-events:none;user-select:none;z-index:0;animation:ghostDrift 20s ease-in-out infinite alternate; }
+@keyframes ghostDrift{ from{transform:translate(-50%,-50%) translateX(-1%);}to{transform:translate(-50%,-50%) translateX(1%);} }
+.hero-rules{ position:absolute;inset:0;z-index:0;pointer-events:none; }
+.hero-rule-line{ position:absolute;left:0;right:0;height:1px;background:var(--rule); }
+.hero-left{ position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:3.5rem 2.5rem 3.5rem 4.5rem;border-right:1px solid var(--rule); }
+.hero-kicker{ display:inline-flex;align-items:center;gap:.6rem;font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-dim);margin-bottom:1.6rem; }
+.hero-kicker-dot{ width:4px;height:4px;border-radius:50%;background:var(--sage);animation:kpulse 2.5s ease-in-out infinite; }
+@keyframes kpulse{ 0%,100%{opacity:1;}50%{opacity:.2;} }
+.hero-title{ font-family:'Fraunces',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:.88;letter-spacing:-.04em;color:var(--cream-h);margin-bottom:1.5rem; }
+.hero-title em{ display:block;font-style:italic;font-weight:300;color:var(--blue-h); }
+.hero-title-ghost{ display:block;color:transparent;-webkit-text-stroke:1.5px rgba(139,191,160,.2); }
+.hero-title-underline{ display:block;width:0;height:2px;background:linear-gradient(to right,var(--sage),var(--blue-h));margin-top:.6rem;animation:lineGrow 1s .6s ease forwards; }
+@keyframes lineGrow{ to{width:100%;} }
+.hero-desc{ font-size:.82rem;color:var(--muted-h);line-height:1.8;font-weight:300;max-width:340px;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .5s ease forwards; }
+.hero-stats{ display:flex;gap:0;border:1px solid var(--rule-green);border-radius:8px;overflow:hidden;width:fit-content;opacity:0;animation:fadeUp .7s .7s ease forwards; }
+.hero-stat{ padding:.7rem 1.4rem;border-right:1px solid var(--rule-green);display:flex;flex-direction:column;align-items:center; }
+.hero-stat:last-child{ border-right:none; }
+.hero-stat-n{ font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:var(--blue-h);line-height:1; }
+.hero-stat-l{ font-size:.52rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-h);margin-top:.2rem; }
+@keyframes fadeUp{ from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;} }
+.hero-middle{ position:relative;z-index:2;width:300px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0 1rem;border-right:1px solid rgba(255,255,255,.06); }
+.hero-polaroid{ width:240px;background:#1c2419;border:1px solid rgba(120,180,140,.12);border-radius:4px;padding:12px 12px 36px;box-shadow:0 24px 70px rgba(0,0,0,.55);position:relative;animation:polaroidIn .9s .3s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes polaroidIn{ from{opacity:0;transform:rotate(-6deg) translateY(30px);}to{opacity:1;transform:rotate(-2deg) translateY(0);} }
+.hero-polaroid:hover{ transform:rotate(0deg) scale(1.04) translateY(-5px);transition:transform .4s ease; }
+.hero-polaroid-img{ width:100%;aspect-ratio:1;overflow:hidden;position:relative; }
+.hero-polaroid-img img,.hero-polaroid-img .pol-img{ width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9) sepia(.08); }
+.hero-polaroid-img .pol-img{ position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease; }
+.hero-polaroid-img .pol-img.active{ opacity:1; }
+.hero-polaroid-label{ text-align:center;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-h);margin-top:8px; }
+.hero-index-card{ display:none; }
+.hero-right{ position:relative;z-index:2;width:180px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:2rem 1.5rem 2rem 2rem;gap:.5rem; }
+.hero-right-title{ font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-bottom:.8rem; }
+.hero-tab-link{ display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;border-radius:6px;border:1px solid transparent;text-decoration:none;transition:all .2s;opacity:0;animation:tabIn .4s ease forwards; }
+.hero-tab-link:nth-child(2){ animation-delay:.5s; }
+.hero-tab-link:nth-child(3){ animation-delay:.65s; }
+.hero-tab-link:nth-child(4){ animation-delay:.8s; }
+@keyframes tabIn{ from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:none;} }
+.hero-tab-link:hover{ background:var(--surface2);border-color:var(--rule-green); }
+.hero-tab-link.htab-active{ background:var(--surface);border-color:var(--rule-green); }
+.hero-tab-icon{ width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0; }
+.tab-icon-blue{ background:rgba(90,171,220,.12);border:1px solid rgba(90,171,220,.15); }
+.tab-icon-green{ background:rgba(120,180,140,.1);border:1px solid rgba(120,180,140,.15); }
+.tab-icon-purple{ background:rgba(160,110,220,.1);border:1px solid rgba(160,110,220,.15); }
+.hero-tab-name{ font-size:.72rem;font-weight:600;color:var(--sage-pale);line-height:1; }
+.hero-tab-link.htab-active .hero-tab-name{ color:var(--sage); }
+.hero-tab-count{ font-size:.58rem;color:var(--muted-h);margin-top:.15rem; }
+.hero-scroll-cue{ position:absolute;bottom:1.5rem;left:4.5rem;display:flex;align-items:center;gap:.7rem;opacity:.25; }
+.hero-scroll-cue span{ font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-h); }
+.hero-scroll-bar{ width:32px;height:1px;background:linear-gradient(to right,var(--cream-h),transparent);animation:barPulse 2s ease-in-out infinite; }
+@keyframes barPulse{ 0%,100%{width:32px;opacity:.4;}50%{width:48px;opacity:1;} }
+
+/* ── HOTSPOTS ── */
+.hotspots-sec{ background:var(--cream);padding-bottom:2rem; }
+.hs-intro{ padding:2.5rem 4rem 1.8rem;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--stone);flex-wrap:wrap;gap:1rem; }
+.hs-intro .sec-title{ color:var(--ink); }
+.hs-intro .sec-title em{ font-style:italic;font-weight:400;color:var(--blue); }
+.sec-eyebrow{ display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;padding:.3rem .85rem;border-radius:50px; }
+.ey-blue{ background:rgba(74,144,196,.1);color:var(--blue);border:1px solid rgba(74,144,196,.2); }
+.ey-dark{ background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1); }
+.hs-subfilter{ display:flex;gap:.4rem;flex-wrap:wrap; }
+.sftab{ background:transparent;border:1.5px solid var(--stone);color:var(--muted);font-family:'DM Sans',sans-serif;border-radius:50px;padding:.35rem 1rem;font-size:.72rem;font-weight:600;cursor:none;transition:all .22s;white-space:nowrap; }
+.sftab:hover{ border-color:var(--blue);color:var(--blue-dim); }
+.sftab.active{ background:var(--blue-dim);border-color:var(--blue-dim);color:#fff; }
+.hs-item.hs-hidden{ display:none !important; }
+.hs-list{ display:flex;flex-direction:column; }
+.hs-item{ display:flex;height:140px;overflow:hidden;position:relative;border-bottom:1px solid rgba(214,205,195,.35);background:#f7f3ee;opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease,background .25s; }
+.hs-item.in-view{ opacity:1;transform:translateY(0); }
+.hs-item:nth-child(even){ flex-direction:row-reverse;background:#1c2419; }
+.hs-item:hover{ filter:brightness(1.04); }
+.hs-item-img{ width:28%;flex-shrink:0;position:relative;overflow:hidden; }
+.hs-item-img img{ width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.05);transform:scale(1.06);transition:transform .8s ease,filter .5s; }
+.hs-item.in-view .hs-item-img img{ transform:scale(1.0); }
+.hs-item:hover .hs-item-img img{ transform:scale(1.04);filter:brightness(.72); }
+.hs-item-img::after{ content:'';position:absolute;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--sage),transparent);right:0; }
+.hs-item:nth-child(even) .hs-item-img::after{ right:auto;left:0; }
+.hs-item-body{ flex:1;display:flex;flex-direction:column;justify-content:center;padding:.9rem 2rem;position:relative; }
+.hs-item-num{ position:absolute;top:50%;right:1rem;transform:translateY(-50%);font-family:'Fraunces',serif;font-size:3.5rem;font-weight:900;line-height:1;color:rgba(74,144,196,.08);pointer-events:none;user-select:none;transition:color .4s; }
+.hs-item:nth-child(even) .hs-item-num{ right:auto;left:1rem;color:rgba(120,180,140,.07); }
+.hs-type-badge{ display:inline-flex;align-items:center;gap:.3rem;font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .55rem;border-radius:50px;margin-bottom:.3rem;width:fit-content; }
+.badge-monument{ background:rgba(90,171,220,.1);color:var(--blue-h);border:1px solid rgba(90,171,220,.18); }
+.badge-museum{ background:rgba(90,171,220,.08);color:#70b0d8;border:1px solid rgba(90,171,220,.14); }
+.badge-temple{ background:rgba(200,140,100,.1);color:#c89070;border:1px solid rgba(200,140,100,.18); }
+.badge-street{ background:rgba(120,180,140,.1);color:var(--sage);border:1px solid var(--rule-green); }
+.badge-shopping{ background:rgba(180,140,80,.1);color:#c9a05a;border:1px solid rgba(180,140,80,.18); }
+.badge-fun{ background:rgba(220,100,100,.1);color:#d07070;border:1px solid rgba(220,100,100,.15); }
+.badge-food{ background:rgba(100,180,120,.1);color:#70c090;border:1px solid rgba(100,180,120,.18); }
+.hs-item-name{ font-family:'Fraunces',serif;font-size:clamp(1rem,1.6vw,1.35rem);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.2rem; }
+.hs-item:nth-child(even) .hs-item-name{ color:var(--cream-h); }
+.hs-item-loc{ font-size:.62rem;color:var(--muted);margin-bottom:.3rem;display:flex;align-items:center;gap:.3rem; }
+.hs-item:nth-child(even) .hs-item-loc{ color:var(--muted-h); }
+.hs-item-desc{ font-size:.72rem;color:#5c5248;line-height:1.5;font-weight:300;max-width:420px;margin-bottom:.45rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+.hs-item:nth-child(even) .hs-item-desc{ color:var(--muted-h); }
+.hs-item-meta{ display:flex;gap:.4rem;flex-wrap:wrap;align-items:center; }
+.hs-entry-pill{ font-size:.55rem;font-weight:700;padding:.18rem .6rem;border-radius:50px; }
+.ep-free{ background:#f0fdf4;color:#2d7a2d;border:1px solid #bbf7d0; }
+.ep-paid{ background:#eff6ff;color:var(--blue);border:1px solid #bfdbfe; }
+.ep-info{ background:var(--warm);color:var(--muted);border:1px solid var(--stone); }
+.hs-item-noimg{ background:#f0ece5 !important; }
+.hs-item-noimg:nth-child(even){ background:#243020 !important; }
+.hs-item-noimg .hs-item-body{ padding:.9rem 2.5rem; }
+
+/* ── NATURE ── */
+.nature-sec{ padding:5rem 0 5rem 4rem;background:var(--ink2);overflow:hidden; }
+.nature-header{ display:flex;justify-content:space-between;align-items:flex-end;padding-right:4rem;margin-bottom:2.5rem; }
+.nature-header .sec-title{ color:var(--blue-pale); }
+.nature-header .sec-title em{ font-style:italic;font-weight:400;color:var(--blue-light); }
+.sec-title{ font-family:'Fraunces',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;line-height:1;letter-spacing:-.025em; }
+.nature-sub{ font-size:.82rem;color:#57534e;line-height:1.7;max-width:300px;font-weight:300; }
+.nature-scroll-hint{ display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:#57534e;font-weight:500; }
+.nature-scroll-arrow{ font-size:1rem;animation:nudge 1.8s ease-in-out infinite; }
+@keyframes nudge{ 0%,100%{transform:translateX(0);}50%{transform:translateX(6px);} }
+.nature-track{ display:flex;gap:1.2rem;overflow-x:auto;scrollbar-width:none;padding-right:4rem;padding-bottom:1rem;scroll-snap-type:x mandatory; }
+.nature-track::-webkit-scrollbar{ display:none; }
+.np{ flex-shrink:0;width:360px;height:480px;border-radius:20px;overflow:hidden;position:relative;scroll-snap-align:start;cursor:none; }
+.np img{ width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(1.1);transition:transform .6s ease,filter .4s; }
+.np:hover img{ transform:scale(1.06);filter:brightness(.75) saturate(1.2); }
+.np-overlay{ position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,30,.88) 0%,transparent 55%); }
+.np-body{ position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.6rem; }
+.np-icon{ font-size:1.5rem;margin-bottom:.5rem;display:block; }
+.np-name{ font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:#f0f6fc;line-height:1.1;margin-bottom:.4rem; }
+.np-loc{ font-size:.7rem;color:rgba(180,210,230,.5);margin-bottom:.6rem; }
+.np-desc{ font-size:.73rem;color:rgba(180,210,230,.65);line-height:1.6;font-weight:300; }
+.np-tags{ display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem; }
+.np-tag{ font-size:.6rem;font-weight:600;padding:.22rem .65rem;border-radius:50px;background:rgba(126,184,232,.12);border:1px solid rgba(126,184,232,.2);color:var(--blue-light); }
+.np-dist{ position:absolute;top:1rem;right:1rem;background:rgba(10,18,30,.6);backdrop-filter:blur(6px);color:var(--slate);font-size:.62rem;font-weight:700;padding:.28rem .75rem;border-radius:50px; }
+
+/* ── EVENTS SECTION ── */
+.events-sec{ padding:5rem 4rem;background:#08121f;position:relative;overflow:hidden; }
+.events-sec::before{ content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(74,144,196,.08) 0%,transparent 70%);pointer-events:none; }
+.ev-ticker{ overflow:hidden;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:.75rem 0;margin-bottom:4rem;background:rgba(255,255,255,.02); }
+.ev-ticker-inner{ display:flex;gap:0;animation:ticker 28s linear infinite;white-space:nowrap; }
+@keyframes ticker{ from{transform:translateX(0);}to{transform:translateX(-50%);} }
+.ev-ticker-item{ display:inline-flex;align-items:center;gap:.8rem;font-size:.72rem;font-weight:600;color:rgba(180,210,230,.35);padding:0 2.5rem;letter-spacing:.05em; }
+.ev-ticker-item span{ color:var(--blue-light);font-size:.65rem; }
+.ev-ticker-dot{ width:4px;height:4px;border-radius:50%;background:rgba(126,184,232,.3); }
+.events-header{ display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem; }
+.events-header .sec-title{ color:var(--blue-pale); }
+.events-header .sec-title em{ font-style:italic;font-weight:400;color:var(--blue-light); }
+.ev-all-link{ color:var(--blue-light);font-size:.78rem;font-weight:600;text-decoration:none;opacity:.6;transition:opacity .2s; }
+.ev-all-link:hover{ opacity:1; }
+.ev-list{ display:flex;flex-direction:column;gap:0; }
+.ev-item{ display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:center;padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:none;transition:all .25s;position:relative; }
+.ev-item::before{ content:'';position:absolute;left:-4rem;right:-4rem;top:0;bottom:0;background:rgba(74,144,196,.04);opacity:0;transition:opacity .25s; }
+.ev-item:hover::before{ opacity:1; }
+.ev-date-block{ display:flex;flex-direction:column;align-items:center;justify-content:center;width:72px;height:72px;border-radius:14px;background:rgba(74,144,196,.1);border:1px solid rgba(74,144,196,.18);flex-shrink:0; }
+.ev-day{ font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--blue-light);line-height:1; }
+.ev-mon{ font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(126,184,232,.5); }
+.ev-cat{ display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;color:var(--blue-light);opacity:.6; }
+.ev-name{ font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--blue-pale);line-height:1.15;margin-bottom:.3rem; }
+.ev-meta{ font-size:.72rem;color:#57534e;display:flex;align-items:center;gap:1rem; }
+.ev-meta-item{ display:flex;align-items:center;gap:.3rem; }
+.ev-right{ display:flex;flex-direction:column;align-items:flex-end;gap:.6rem; }
+.ev-price{ font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--blue-pale); }
+.ev-price-sub{ font-size:.62rem;color:#57534e;font-weight:400; }
+.ev-btn{ background:rgba(74,144,196,.15);border:1px solid rgba(74,144,196,.25);color:var(--blue-light);font-size:.7rem;font-weight:600;padding:.45rem 1.1rem;border-radius:50px;cursor:none;transition:all .22s;font-family:'DM Sans',sans-serif; }
+.ev-btn:hover{ background:var(--blue);color:#fff;border-color:var(--blue); }
+
+/* ── ADMIN EVENT CONTROLS ── */
+/* Only show admin controls when body has is-admin class */
+.ev-admin-controls{ display:none; }
+body.is-admin .ev-admin-controls{ display:flex; }
+
+/* Per-event action buttons that appear on hover */
+.ev-item-admin{ display:none;gap:.4rem;align-items:center; }
+body.is-admin .ev-item-admin{ display:flex; }
+
+.ev-edit-btn{
+  background:rgba(255,107,43,.1);
+  border:1px solid rgba(255,107,43,.2);
+  color:var(--admin-soft);
+  font-size:.65rem;font-weight:700;
+  padding:.35rem .85rem;border-radius:50px;
+  cursor:pointer;transition:all .2s;
+  font-family:'DM Sans',sans-serif;
+  white-space:nowrap;
+}
+.ev-edit-btn:hover{ background:var(--admin);color:#fff;border-color:var(--admin); }
+
+.ev-del-btn{
+  background:rgba(200,80,80,.1);
+  border:1px solid rgba(200,80,80,.18);
+  color:#d07070;
+  font-size:.65rem;font-weight:700;
+  padding:.35rem .85rem;border-radius:50px;
+  cursor:pointer;transition:all .2s;
+  font-family:'DM Sans',sans-serif;
+  white-space:nowrap;
+}
+.ev-del-btn:hover{ background:#c04040;color:#fff;border-color:#c04040; }
+
+/* Add event button — floats at bottom of events list */
+.ev-add-wrap{
+  display:none;
+  padding:2rem 0 0;
+  justify-content:center;
+}
+body.is-admin .ev-add-wrap{ display:flex; }
+
+.ev-add-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--admin-dim);
+  border:1.5px dashed var(--admin-border);
+  color:var(--admin-soft);
+  font-size:.78rem;font-weight:700;
+  padding:.8rem 2rem;border-radius:50px;
+  cursor:pointer;transition:all .25s;
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.04em;
+}
+.ev-add-btn:hover{ background:rgba(255,107,43,.2);border-color:var(--admin);color:var(--admin); }
+.ev-add-btn .plus{ font-size:1.1rem;line-height:1; }
+
+/* ── ADMIN BANNER (top of events section) ── */
+.admin-section-banner{
+  display:none;
+  align-items:center;gap:.8rem;
+  background:var(--admin-dim);
+  border:1px solid var(--admin-border);
+  border-radius:8px;
+  padding:.7rem 1.2rem;
+  margin-bottom:2rem;
+  font-size:.72rem;color:var(--admin-soft);font-weight:500;
+}
+.admin-section-banner .icon{ font-size:.9rem; }
+body.is-admin .admin-section-banner{ display:flex; }
+
+/* ── MODAL ── */
+.ev-modal-backdrop{
+  display:none;
+  position:fixed;inset:0;z-index:500;
+  background:rgba(5,10,8,.85);
+  backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
+  padding:1rem;
+}
+.ev-modal-backdrop.open{ display:flex; }
+
+.ev-modal{
+  background:var(--panel-bg);
+  border:1px solid var(--rule-green);
+  border-radius:16px;
+  width:100%;max-width:560px;
+  max-height:90vh;overflow-y:auto;
+  box-shadow:0 32px 80px rgba(0,0,0,.6);
+  animation:modalIn .3s cubic-bezier(.22,.61,.36,1);
+  scrollbar-width:none;
+}
+.ev-modal::-webkit-scrollbar{ display:none; }
+@keyframes modalIn{ from{opacity:0;transform:scale(.95) translateY(16px);}to{opacity:1;transform:none;} }
+
+.ev-modal-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.5rem 1.8rem 1rem;
+  border-bottom:1px solid var(--rule);
+  position:sticky;top:0;
+  background:var(--panel-bg);
+  z-index:1;
+}
+.ev-modal-title{
+  font-family:'Fraunces',serif;
+  font-size:1.2rem;font-weight:700;
+  color:var(--cream-h);
+}
+.ev-modal-title span{ color:var(--admin); }
+.ev-modal-close{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--surface);border:1px solid var(--rule);
+  color:var(--muted-h);font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;
+  font-family:'DM Sans',sans-serif;
+  flex-shrink:0;
+}
+.ev-modal-close:hover{ background:var(--surface2);color:var(--cream-h); }
+
+.ev-modal-body{ padding:1.5rem 1.8rem; }
+
+/* form fields inside modal */
+.mf{ margin-bottom:1.1rem; }
+.mf label{
+  display:block;font-size:.65rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted-h);margin-bottom:.4rem;
+}
+.mf input, .mf select{
+  width:100%;
+  padding:.6rem .85rem;
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  color:var(--cream-h);
+  font-size:.82rem;
+  font-family:'DM Sans',sans-serif;
+  outline:none;
+  transition:border-color .2s,background .2s;
+  box-sizing:border-box;
+}
+.mf input:focus, .mf select:focus{
+  border-color:var(--admin);
+  background:rgba(255,107,43,.05);
+}
+.mf input::placeholder{ color:rgba(232,226,216,.2); }
+.mf select option{ background:var(--surface); }
+.mf-row{ display:grid;grid-template-columns:1fr 1fr;gap:.9rem; }
+
+/* modal error */
+.mf-error{ font-size:.68rem;color:#ff7070;margin-top:.3rem;display:none; }
+.mf-error.show{ display:block; }
+
+/* modal action buttons */
+.ev-modal-actions{
+  display:flex;gap:.7rem;justify-content:flex-end;
+  padding:1rem 1.8rem 1.5rem;
+  border-top:1px solid var(--rule);
+}
+.btn-cancel{
+  background:transparent;border:1px solid var(--rule);
+  color:var(--muted-h);font-size:.78rem;font-weight:600;
+  padding:.65rem 1.4rem;border-radius:50px;cursor:pointer;
+  transition:all .2s;font-family:'DM Sans',sans-serif;
+}
+.btn-cancel:hover{ border-color:var(--muted-h);color:var(--cream-h); }
+.btn-save{
+  background:var(--admin);border:none;
+  color:#fff;font-size:.78rem;font-weight:700;
+  padding:.65rem 1.6rem;border-radius:50px;cursor:pointer;
+  transition:all .2s;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;gap:.5rem;
+}
+.btn-save:hover{ background:var(--admin-soft);transform:translateY(-1px); }
+.btn-save:disabled{ opacity:.5;cursor:not-allowed;transform:none; }
+.btn-save .spinner{
+  width:12px;height:12px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff;
+  animation:spin .6s linear infinite;
+  display:none;
+}
+.btn-save.loading .spinner{ display:block; }
+@keyframes spin{ to{transform:rotate(360deg);} }
+
+/* toast notification */
+.ev-toast{
+  position:fixed;bottom:2rem;right:2rem;z-index:600;
+  background:var(--surface2);border:1px solid var(--rule-green);
+  border-radius:10px;padding:.85rem 1.3rem;
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.78rem;font-weight:600;color:var(--sage);
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .3s,transform .3s;
+  pointer-events:none;
+}
+.ev-toast.show{ opacity:1;transform:translateY(0); }
+.ev-toast.toast-error{ background:rgba(200,60,60,.15);border-color:rgba(200,60,60,.25);color:#d07070; }
+.ev-toast-icon{ font-size:1rem; }
+
+/* delete confirm overlay */
+.ev-confirm{
+  display:none;position:fixed;inset:0;z-index:510;
+  background:rgba(5,10,8,.88);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+}
+.ev-confirm.open{ display:flex; }
+.ev-confirm-box{
+  background:var(--panel-bg);
+  border:1px solid rgba(200,60,60,.2);
+  border-radius:14px;padding:2rem;width:100%;max-width:360px;
+  text-align:center;
+  animation:modalIn .25s ease;
+}
+.ev-confirm-icon{ font-size:2rem;margin-bottom:.8rem; }
+.ev-confirm-title{ font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:var(--cream-h);margin-bottom:.4rem; }
+.ev-confirm-msg{ font-size:.78rem;color:var(--muted-h);line-height:1.5;margin-bottom:1.5rem; }
+.ev-confirm-actions{ display:flex;gap:.7rem;justify-content:center; }
+.btn-confirm-del{ background:#c04040;border:none;color:#fff;font-size:.78rem;font-weight:700;padding:.65rem 1.6rem;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif; }
+.btn-confirm-del:hover{ background:#e05050; }
+
+/* ── GEMS ── */
+.gems-sec{ padding:3.5rem 4rem;background:var(--warm);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone); }
+.gems-inner{ display:flex;align-items:center;gap:2rem;flex-wrap:wrap; }
+.gems-label{ font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--ink);white-space:nowrap; }
+.gems-label em{ font-style:italic;color:var(--blue); }
+.gems-divider{ width:40px;height:1px;background:var(--stone);flex-shrink:0; }
+.gems-tags{ display:flex;flex-wrap:wrap;gap:.5rem; }
+.gem-tag{ display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:500;padding:.42rem 1rem;border-radius:50px;border:1.5px solid var(--stone);color:var(--ink);background:var(--cream);transition:all .22s;cursor:none; }
+.gem-tag:hover{ border-color:var(--blue);color:var(--blue-dim);background:#eff6ff; }
+
+/* ── FOOTER ── */
+.foot-cta{ padding:5rem 4rem;background:var(--ink);text-align:center;position:relative;overflow:hidden; }
+.foot-cta::before{ content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:260px;background:radial-gradient(ellipse,rgba(74,144,196,.1) 0%,transparent 70%); }
+.foot-cta h2{ font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--blue-pale);line-height:1.1;position:relative;z-index:1; }
+.foot-cta h2 em{ font-style:italic;font-weight:400;color:var(--blue-light); }
+.foot-cta p{ color:rgba(220,230,240,.3);font-size:.88rem;margin-top:.7rem;font-weight:300;position:relative;z-index:1; }
+.foot-btns{ display:flex;gap:1rem;justify-content:center;margin-top:2rem;position:relative;z-index:1; }
+.btn-blue{ background:var(--blue);color:#fff;padding:.85rem 2rem;border-radius:50px;font-size:.82rem;font-weight:700;border:none;cursor:none;transition:all .22s;box-shadow:0 4px 20px rgba(74,144,196,.3);font-family:'DM Sans',sans-serif;text-decoration:none; }
+.btn-blue:hover{ background:#3a7ab0;transform:translateY(-2px); }
+.btn-ghost-blue{ background:transparent;color:var(--blue-light);padding:.85rem 2rem;border-radius:50px;font-size:.82rem;font-weight:600;border:1.5px solid rgba(126,184,232,.3);cursor:none;transition:all .22s;font-family:'DM Sans',sans-serif;text-decoration:none; }
+.btn-ghost-blue:hover{ border-color:var(--blue-light);background:rgba(126,184,232,.07); }
+
+/* ── SHARED ── */
+.reveal{ opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s; }
+.reveal.visible{ opacity:1;transform:none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){ .hero-middle{ display:none; } }
+@media(max-width:900px){
+  .hero{ flex-direction:column;height:auto;max-height:none; }
+  .hero-left{ padding:2.5rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule); }
+  .hero-right{ width:100%;flex-direction:row;flex-wrap:wrap;padding:1rem 1.5rem;gap:.5rem; }
+  .hs-intro{ padding:2rem 1.5rem 1.5rem; }
+  .hs-item,.hs-item:nth-child(even){ flex-direction:column;height:auto; }
+  .hs-item-img{ width:100%;height:180px; }
+  .hs-item-body{ padding:1.2rem 1.5rem; }
+  .ev-item{ grid-template-columns:60px 1fr;gap:1rem; }
+  .ev-right{ display:none; }
+  .events-sec,.gems-sec,.foot-cta{ padding-left:1.5rem;padding-right:1.5rem; }
+  nav{ padding:.9rem 1.5rem; }
+  .filter-bar{ padding:.7rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-logo">Namma <span>BLR</span></div>
+  <div class="nav-links">
+    <a href="landing page2.html">Home</a>
+    <a href="food3.html">Food</a>
+    <a href="nightlife3.html">Nightlife</a>
+    <a href="hotspots2.html">Hotspots</a>
+  </div>
+  <div class="nav-right">
+    <!-- Only visible when admin -->
+    <div class="nav-admin-badge">
+      <span class="dot"></span>
+      <span id="adminName">Admin</span>
+    </div>
+    <a href="landing page2.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="hero">
+  <div class="hero-ghost-text">BLR</div>
+  <div class="hero-rules">
+    <div class="hero-rule-line" style="top:33%"></div>
+    <div class="hero-rule-line" style="top:66%"></div>
+  </div>
+  <div class="hero-left">
+    <div class="hero-kicker"><span class="hero-kicker-dot"></span>Namma BLR &nbsp;·&nbsp; Wander &amp; Wonder</div>
+    <h1 class="hero-title">
+      <span class="hero-title-ghost">Explore</span>
+      <em>Bengaluru.</em>
+      <span class="hero-title-underline"></span>
+    </h1>
+    <p class="hero-desc">Monuments soaked in history. Markets alive with colour. Streets that shift personality every 500 metres. All in one place.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-n">18</div><div class="hero-stat-l">Hotspots</div></div>
+      <div class="hero-stat"><div class="hero-stat-n">6</div><div class="hero-stat-l">Nature</div></div>
+      <div class="hero-stat"><div class="hero-stat-n" id="evStatCount">5+</div><div class="hero-stat-l">Events</div></div>
+    </div>
+  </div>
+  <div class="hero-middle">
+    <div class="hero-polaroid">
+      <div class="hero-polaroid-img">
+        <img class="pol-img active" src="https://i.pinimg.com/736x/4b/cb/7c/4bcb7cbd55e5ab4abb0e2307417c72e7.jpg" alt="Vidhana Soudha"/>
+        <img class="pol-img" src="https://i.pinimg.com/736x/41/25/84/412584d7ff80fc7e3b7782346a454bfe.jpg" alt="Church Street"/>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&auto=format" alt="KR Market"/>
+      </div>
+      <div class="hero-polaroid-label" id="polLabel">Vidhana Soudha</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-title">Explore</div>
+    <a href="#hotspots" class="hero-tab-link htab-active">
+      <div class="hero-tab-icon tab-icon-blue">📍</div>
+      <div class="hero-tab-info"><div class="hero-tab-name">Hotspots</div><div class="hero-tab-count">18 places</div></div>
+    </a>
+    <a href="#nature" class="hero-tab-link">
+      <div class="hero-tab-icon tab-icon-green">🌿</div>
+      <div class="hero-tab-info"><div class="hero-tab-name">Nature</div><div class="hero-tab-count">6 escapes</div></div>
+    </a>
+    <a href="#events" class="hero-tab-link">
+      <div class="hero-tab-icon tab-icon-purple">🎉</div>
+      <div class="hero-tab-info"><div class="hero-tab-name">Events</div><div class="hero-tab-count" id="evTabCount">5+ upcoming</div></div>
+    </a>
+  </div>
+  <div class="hero-scroll-cue">
+    <div class="hero-scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- ══ FILTER BAR ══ -->
+<div class="filter-bar">
+  <span class="filter-label">Show me</span>
+  <button class="ftab active" data-filter="all">🌐 Everything</button>
+  <button class="ftab" data-filter="hotspot">📍 Hotspots</button>
+  <button class="ftab" data-filter="nature">🌿 Nature</button>
+  <button class="ftab" data-filter="events">🎉 Events</button>
+</div>
+
+<!-- ══ HOTSPOTS ══ -->
+<section class="hotspots-sec" id="hotspots" data-section="hotspot">
+  <div class="hs-intro">
+    <div>
+      <div class="sec-eyebrow ey-blue">📍 Iconic Hotspots</div>
+      <h2 class="sec-title">Places that define<br><em>Namma BLR</em></h2>
+    </div>
+    <div class="hs-subfilter">
+      <button class="sftab active" data-sub="all">✦ All</button>
+      <button class="sftab" data-sub="family">🏡 Family Friendly</button>
+      <button class="sftab" data-sub="kids">🧸 Kids Zone</button>
+      <button class="sftab" data-sub="teens">🧑‍🤝‍🧑 Teens &amp; Adults</button>
+    </div>
+  </div>
+  <div class="hs-list">
+    <div class="hs-item" data-sub="family">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&auto=format" alt="Bannerghatta"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">01</div><div class="hs-type-badge badge-street">🦁 Wildlife Park</div><div class="hs-item-name">Bannerghatta Biological Park</div><div class="hs-item-loc">📍 Bannerghatta Road, 22km south</div><p class="hs-item-desc">Zoo, safari, butterfly park and rescue centre — lions, tigers, elephants and more, all in one sprawling reserve. A full family day out.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹80 onwards</span><span class="hs-entry-pill ep-info">Tue–Sun · 9:30am–5pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="family">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&auto=format" alt="Lumbini Gardens"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">02</div><div class="hs-type-badge badge-street">🌊 Gardens & Boating</div><div class="hs-item-name">Lumbini Gardens</div><div class="hs-item-loc">📍 Nagawara, North Bengaluru</div><p class="hs-item-desc">Lakeside gardens with boating, a musical fountain, and open green space that's perfect for a slow, breezy family afternoon.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹30 entry</span><span class="hs-entry-pill ep-info">Daily · 9am–8pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="family">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=600&auto=format" alt="Planetarium"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">03</div><div class="hs-type-badge badge-museum">🔭 Science</div><div class="hs-item-name">Jawaharlal Nehru Planetarium</div><div class="hs-item-loc">📍 Raj Bhavan Road, Central BLR</div><p class="hs-item-desc">Sky shows, space exhibits, and a dome that wraps the whole family in stars. The universe feels very close here.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹80 entry</span><span class="hs-entry-pill ep-info">Shows daily · 11:30am–6pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="family">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format" alt="Visvesvaraya"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">04</div><div class="hs-type-badge badge-museum">🔬 Museum</div><div class="hs-item-name">Visvesvaraya Industrial Museum</div><div class="hs-item-loc">📍 Kasturba Road, Central BLR</div><p class="hs-item-desc">Hands-on science and tech exhibits that make India's industrial story come alive — engines, robots, electronics. Brilliant for all ages.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹60 entry</span><span class="hs-entry-pill ep-info">Tue–Sun · 10am–6pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="family">
+      <div class="hs-item-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ISKCON_Temple_Bangalore.jpg/1280px-ISKCON_Temple_Bangalore.jpg" alt="ISKCON"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">05</div><div class="hs-type-badge badge-temple">🪔 Temple</div><div class="hs-item-name">ISKCON Temple Bangalore</div><div class="hs-item-loc">📍 Rajajinagar, West Bengaluru</div><p class="hs-item-desc">One of the world's grandest ISKCON temples — white marble spires, ornate halls, prasad, and a peaceful atmosphere the whole family can feel.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-free">Free Entry</span><span class="hs-entry-pill ep-info">7am–1pm · 4–8:30pm</span></div></div>
+    </div>
+    <div class="hs-item hs-item-noimg" data-sub="family">
+      <div class="hs-item-body"><div class="hs-item-num">06</div><div class="hs-type-badge badge-fun">❄️ Indoor Experience</div><div class="hs-item-name">Snow City Bangalore</div><div class="hs-item-loc">📍 Palace Grounds, BLR</div><p class="hs-item-desc">A real snow experience indoors — snow slides, igloos, and sub-zero fun that leaves everyone wide-eyed and layered up.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹499 onwards</span><span class="hs-entry-pill ep-info">Daily · 10am–9pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="kids">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=600&auto=format" alt="Play Arena"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">01</div><div class="hs-type-badge badge-fun">🎮 Play Zone</div><div class="hs-item-name">Play Arena</div><div class="hs-item-loc">📍 Whitefield & Indiranagar</div><p class="hs-item-desc">BLR's biggest indoor entertainment zone — go-karting, laser tag, arcade games, bowling and more under one massive roof.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹200 onwards</span><span class="hs-entry-pill ep-info">Daily · 11am–10pm</span></div></div>
+    </div>
+    <div class="hs-item hs-item-noimg" data-sub="kids">
+      <div class="hs-item-body"><div class="hs-item-num">02</div><div class="hs-type-badge badge-fun">🐷 Theme Play</div><div class="hs-item-name">Peppa Pig World of Play</div><div class="hs-item-loc">📍 Orion Mall, Rajajinagar</div><p class="hs-item-desc">The UK's beloved pink piggy comes to Bengaluru — interactive play zones, role-play areas, and big muddy puddle energy for little ones.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹700 onwards</span><span class="hs-entry-pill ep-info">Daily · 10am–8pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="kids">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&auto=format" alt="Trampoline"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">03</div><div class="hs-type-badge badge-fun">🤸 Trampoline</div><div class="hs-item-name">SkyJumper Trampoline Park</div><div class="hs-item-loc">📍 Koramangala & Whitefield</div><p class="hs-item-desc">Wall-to-wall trampolines, foam pits, dodgeball courts and a ninja warrior course. The kind of place kids refuse to leave.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹399 per hour</span><span class="hs-entry-pill ep-info">Daily · 10am–9pm</span></div></div>
+    </div>
+    <div class="hs-item hs-item-noimg" data-sub="kids">
+      <div class="hs-item-body"><div class="hs-item-num">04</div><div class="hs-type-badge badge-museum">👷 Role Play City</div><div class="hs-item-name">KidZania Bangalore</div><div class="hs-item-loc">📍 RMZ Galleria Mall, Yelahanka</div><p class="hs-item-desc">A miniature city where kids become doctors, pilots, chefs and firefighters. Real job simulations, real confidence, real fun.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹800 per child</span><span class="hs-entry-pill ep-info">Daily · 10am–8pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="teens">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&auto=format" alt="UB City"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">01</div><div class="hs-type-badge badge-shopping">🛍️ Luxury Shopping</div><div class="hs-item-name">UB City Mall</div><div class="hs-item-loc">📍 Vittal Mallya Road, Central BLR</div><p class="hs-item-desc">Bengaluru's most glamorous address — luxury boutiques, open-air piazzas, rooftop bars. Where the city dresses up and shows off.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-free">Free Entry</span><span class="hs-entry-pill ep-info">Daily · 11am–11pm</span></div></div>
+    </div>
+    <div class="hs-item" data-sub="teens">
+      <div class="hs-item-img"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&auto=format" alt="Commercial Street"/></div>
+      <div class="hs-item-body"><div class="hs-item-num">02</div><div class="hs-type-badge badge-shopping">🛍️ Street Shopping</div><div class="hs-item-name">Commercial Street</div><div class="hs-item-loc">📍 Shivajinagar, Central BLR</div><p class="hs-item-desc">Bengaluru's oldest shopping artery — textiles, jewellery, street food, and the kind of high-energy bargaining that's basically a local sport.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-free">Free Entry</span><span class="hs-entry-pill ep-info">Daily · 10am–9pm</span></div></div>
+    </div>
+    <div class="hs-item hs-item-noimg" data-sub="teens">
+      <div class="hs-item-body"><div class="hs-item-num">03</div><div class="hs-type-badge badge-fun">🔐 Escape Room</div><div class="hs-item-name">Breakout Escape Room</div><div class="hs-item-loc">📍 Indiranagar & Koramangala</div><p class="hs-item-desc">Lock yourself in, solve the puzzles, escape before time runs out. Genuinely brain-bending and wildly fun with a group.</p><div class="hs-item-meta"><span class="hs-entry-pill ep-paid">₹500 per person</span><span class="hs-entry-pill ep-info">Daily · 11am–11pm</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NATURE ══ -->
+<section class="nature-sec reveal" id="nature" data-section="nature">
+  <div class="nature-header">
+    <div>
+      <div class="sec-eyebrow ey-dark">🌿 Nature Escapes</div>
+      <h2 class="sec-title">Breathe it<br><em>all in.</em></h2>
+    </div>
+    <div>
+      <p class="nature-sub">From misty hilltops to mirror-still lakes — Bengaluru's green escapes are closer than you think.</p>
+      <div class="nature-scroll-hint"><span class="nature-scroll-arrow">→</span> Scroll to explore</div>
+    </div>
+  </div>
+  <div class="nature-track">
+    <div class="np"><img src="https://i.pinimg.com/1200x/92/2c/64/922c64a108004c028249799d8bb62498.jpg" alt="Lalbagh"/><div class="np-overlay"></div><span class="np-dist">City Centre</span><div class="np-body"><span class="np-icon">🌸</span><div class="np-name">Lalbagh Botanical Garden</div><div class="np-loc">📍 Mavalli, South Bengaluru</div><div class="np-desc">240 acres of tropical wonder — rare plants, a Victorian Glass House, and the beloved Republic Day flower show.</div><div class="np-tags"><span class="np-tag">Free Entry</span><span class="np-tag">240 acres</span></div></div></div>
+    <div class="np"><img src="https://i.pinimg.com/736x/9d/7d/60/9d7d60af303f7add1d8b303e3140db31.jpg" alt="Cubbon Park"/><div class="np-overlay"></div><span class="np-dist">City Centre</span><div class="np-body"><span class="np-icon">🌳</span><div class="np-name">Cubbon Park</div><div class="np-loc">📍 Sampangi Rama Nagar</div><div class="np-desc">The city's living room — 300 acres of forest paths, 6,000 trees, cyclists, readers, and Sunday picnics.</div><div class="np-tags"><span class="np-tag">Free Entry</span><span class="np-tag">300 acres</span></div></div></div>
+    <div class="np"><img src="https://i.pinimg.com/736x/af/65/68/af6568e402ca95625b352a63bfb40177.jpg" alt="Nandi Hills"/><div class="np-overlay"></div><span class="np-dist">60 km away</span><div class="np-body"><span class="np-icon">⛰️</span><div class="np-name">Nandi Hills</div><div class="np-loc">📍 Chikkaballapur District</div><div class="np-desc">Wake at 4am, drive through darkness, arrive to a hilltop wrapped in fog. The sunrise here is worth every kilometre.</div><div class="np-tags"><span class="np-tag">₹20 Entry</span><span class="np-tag">1,478m</span></div></div></div>
+    <div class="np"><img src="https://images.unsplash.com/photo-1585938389612-a552a28d6914?w=800&auto=format" alt="Ulsoor Lake"/><div class="np-overlay"></div><span class="np-dist">City Centre</span><div class="np-body"><span class="np-icon">🚣</span><div class="np-name">Ulsoor Lake</div><div class="np-loc">📍 Ulsoor, Central Bengaluru</div><div class="np-desc">A 50-hectare urban oasis. Morning mist, rowing boats, and the soft sounds of a city waking up.</div><div class="np-tags"><span class="np-tag">Boating ₹30</span><span class="np-tag">50 hectares</span></div></div></div>
+    <div class="np"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format" alt="Shivanasamudra"/><div class="np-overlay"></div><span class="np-dist">130 km away</span><div class="np-body"><span class="np-icon">💧</span><div class="np-name">Shivanasamudra Falls</div><div class="np-loc">📍 Mandya District</div><div class="np-desc">The Kaveri splits into two thundering cascades dropping 98 metres into a gorge.</div><div class="np-tags"><span class="np-tag">Free Entry</span><span class="np-tag">98m drop</span></div></div></div>
+    <div class="np"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format" alt="Skandagiri"/><div class="np-overlay"></div><span class="np-dist">70 km away</span><div class="np-body"><span class="np-icon">🌄</span><div class="np-name">Skandagiri Hills</div><div class="np-loc">📍 Chikkaballapur</div><div class="np-desc">BLR's favourite night trek destination. Trek through the dark, camp above the clouds, wake to a sea of mist below.</div><div class="np-tags"><span class="np-tag">Night Trek</span><span class="np-tag">1,450m</span></div></div></div>
+  </div>
+</section>
+
+<!-- ══ EVENTS ══ -->
+<section class="events-sec reveal" id="events" data-section="events">
+  <div class="ev-ticker">
+    <div class="ev-ticker-inner" id="tickerInner">
+      <span class="ev-ticker-item">🎵 BLR Music Festival <span>Mar 22–24 · Palace Grounds</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎤 Comicstaan Live <span>Apr 5 · Indiranagar</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🌸 Lalbagh Flower Show <span>Jan 26 · Lalbagh Garden</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎸 Echoes of Earth <span>Dec · Bangalore</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎨 BLR Art Week <span>Apr 12–14 · Cubbon Park</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🏃 Bengaluru Marathon <span>Oct · MG Road</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎵 BLR Music Festival <span>Mar 22–24 · Palace Grounds</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎤 Comicstaan Live <span>Apr 5 · Indiranagar</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🌸 Lalbagh Flower Show <span>Jan 26 · Lalbagh Garden</span></span><span class="ev-ticker-dot"></span>
+      <span class="ev-ticker-item">🎸 Echoes of Earth <span>Dec · Bangalore</span></span><span class="ev-ticker-dot"></span>
+    </div>
+  </div>
+
+  <div class="events-header">
+    <div>
+      <div class="sec-eyebrow ey-dark">🎉 Upcoming Events</div>
+      <h2 class="sec-title">What's happening<br><em>in the city.</em></h2>
+    </div>
+    <a href="#" class="ev-all-link">View full calendar →</a>
+  </div>
+
+  <!-- Admin info banner — only shows for admin -->
+  <div class="admin-section-banner">
+    <span class="icon">🛡️</span>
+    <span>You're viewing as <strong>Admin</strong> — use the Edit &amp; Delete buttons on each event, or add a new one below.</span>
+  </div>
+
+  <!-- Event list — rendered by JS -->
+  <div class="ev-list" id="evList">
+    <!-- skeleton while loading -->
+    <div style="color:var(--muted-h);font-size:.8rem;padding:2rem 0;opacity:.5;">Loading events…</div>
+  </div>
+
+  <!-- Add event button — admin only -->
+  <div class="ev-add-wrap">
+    <button class="ev-add-btn" id="addEvBtn">
+      <span class="plus">＋</span> Add New Event
+    </button>
+  </div>
+</section>
+
+<!-- ══ GEMS ══ -->
+<section class="gems-sec reveal" id="gems">
+  <div class="gems-inner">
+    <div class="gems-label">Also worth<br><em>your time</em></div>
+    <div class="gems-divider" style="width:40px;height:1px;background:var(--stone);flex-shrink:0;"></div>
+    <div class="gems-tags">
+      <span class="gem-tag">🎭 Ranga Shankara Theatre</span>
+      <span class="gem-tag">🍦 Corner House Ice Cream</span>
+      <span class="gem-tag">🕌 Tipu Sultan's Summer Palace</span>
+      <span class="gem-tag">🌅 Bannerghatta National Park</span>
+      <span class="gem-tag">🎲 Funky Town Arcade</span>
+      <span class="gem-tag">📚 Blossom Book House</span>
+      <span class="gem-tag">🖼️ National Gallery of Modern Art</span>
+      <span class="gem-tag">☕ Matteo Coffea, MG Road</span>
+      <span class="gem-tag">🧘 Isha Yoga Centre</span>
+      <span class="gem-tag">🎯 VV Puram Food Street</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div class="foot-cta">
+  <h2>Ready to <em>wander</em><br>Namma BLR?</h2>
+  <p>Every spot is better experienced than described. Go find your story.</p>
+  <div class="foot-btns">
+    <a href="food3.html" class="btn-blue">Explore the Food Scene →</a>
+    <a href="nightlife3.html" class="btn-ghost-blue">Discover Nightlife</a>
+  </div>
+</div>
+
+<!-- ══ ADMIN MODAL ══ -->
+<div class="ev-modal-backdrop" id="evModalBackdrop">
+  <div class="ev-modal">
+    <div class="ev-modal-header">
+      <div class="ev-modal-title" id="modalTitle">Add <span>Event</span></div>
+      <button class="ev-modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="ev-modal-body">
+      <input type="hidden" id="mfId" value="0">
+      <div class="mf-row">
+        <div class="mf">
+          <label>Day <small style="text-transform:none;letter-spacing:0;color:var(--muted-h);font-weight:400">(e.g. 22)</small></label>
+          <input type="text" id="mfDay" placeholder="22" maxlength="2">
+          <div class="mf-error" id="errDay">Required</div>
+        </div>
+        <div class="mf">
+          <label>Month <small style="text-transform:none;letter-spacing:0;color:var(--muted-h);font-weight:400">(e.g. Apr)</small></label>
+          <input type="text" id="mfMonth" placeholder="Apr" maxlength="3">
+          <div class="mf-error" id="errMonth">Required</div>
+        </div>
+      </div>
+      <div class="mf">
+        <label>Category <small style="text-transform:none;letter-spacing:0;color:var(--muted-h);font-weight:400">(e.g. 🎵 Music Festival)</small></label>
+        <input type="text" id="mfCat" placeholder="🎵 Music Festival">
+        <div class="mf-error" id="errCat">Required</div>
+      </div>
+      <div class="mf">
+        <label>Event Name</label>
+        <input type="text" id="mfName" placeholder="BLR Music Festival 2026">
+        <div class="mf-error" id="errName">Required</div>
+      </div>
+      <div class="mf">
+        <label>Location</label>
+        <input type="text" id="mfLoc" placeholder="Palace Grounds, BLR">
+        <div class="mf-error" id="errLoc">Required</div>
+      </div>
+      <div class="mf-row">
+        <div class="mf">
+          <label>Time</label>
+          <input type="text" id="mfTime" placeholder="6pm – 2am">
+          <div class="mf-error" id="errTime">Required</div>
+        </div>
+        <div class="mf">
+          <label>Duration</label>
+          <input type="text" id="mfDuration" placeholder="3 days">
+          <div class="mf-error" id="errDuration">Required</div>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf">
+          <label>Price</label>
+          <input type="text" id="mfPrice" placeholder="₹1,499 or Free">
+          <div class="mf-error" id="errPrice">Required</div>
+        </div>
+        <div class="mf">
+          <label>Price Sub</label>
+          <input type="text" id="mfPriceSub" placeholder="onwards / per person">
+        </div>
+      </div>
+      <div class="mf">
+        <label>Button Label</label>
+        <select id="mfBtn">
+          <option value="Book Tickets">Book Tickets</option>
+          <option value="Book Spot">Book Spot</option>
+          <option value="Learn More">Learn More</option>
+          <option value="Register">Register</option>
+        </select>
+      </div>
+    </div>
+    <div class="ev-modal-actions">
+      <button class="btn-cancel" id="modalCancel">Cancel</button>
+      <button class="btn-save" id="modalSave">
+        <span class="spinner"></span>
+        <span id="saveBtnText">Save Event</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DELETE CONFIRM ══ -->
+<div class="ev-confirm" id="evConfirm">
+  <div class="ev-confirm-box">
+    <div class="ev-confirm-icon">🗑️</div>
+    <div class="ev-confirm-title">Delete Event?</div>
+    <div class="ev-confirm-msg" id="confirmMsg">This will permanently remove the event from the database.</div>
+    <div class="ev-confirm-actions">
+      <button class="btn-cancel" id="confirmCancel">Keep it</button>
+      <button class="btn-confirm-del" id="confirmDel">Yes, delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="ev-toast" id="evToast">
+  <span class="ev-toast-icon" id="toastIcon">✓</span>
+  <span id="toastMsg">Done!</span>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIG — change path to match your XAMPP setup
+// ─────────────────────────────────────────────
+const API = 'http://localhost/NammaHub/api_events.php';
+
+// ─────────────────────────────────────────────
+// ROLE CHECK — read sessionStorage set by login2.html
+// ─────────────────────────────────────────────
+const sessionUser = (() => {
+  try { return JSON.parse(sessionStorage.getItem('namma_user') || 'null'); }
+  catch { return null; }
+})();
+const isAdmin = sessionUser?.role === 'admin';
+if (isAdmin) {
+  document.body.classList.add('is-admin');
+  // Show admin name in nav badge
+  const adminName = document.getElementById('adminName');
+  if (adminName && sessionUser.first_name) {
+    adminName.textContent = sessionUser.first_name + ' (Admin)';
+  }
+}
+
+// ─────────────────────────────────────────────
+// CURSOR
+// ─────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+// ─────────────────────────────────────────────
+// POLAROID ROTATE
+// ─────────────────────────────────────────────
+const polImgs   = document.querySelectorAll('.pol-img');
+const polLabels = ['Vidhana Soudha','Church Street','KR Market'];
+const polLabel  = document.getElementById('polLabel');
+let pCur = 0;
+setInterval(() => {
+  polImgs[pCur].classList.remove('active');
+  pCur = (pCur+1) % polImgs.length;
+  polImgs[pCur].classList.add('active');
+  if (polLabel) polLabel.textContent = polLabels[pCur];
+}, 3500);
+
+// ─────────────────────────────────────────────
+// SCROLL REVEAL
+// ─────────────────────────────────────────────
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:.08 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// Hotspot items
+const itemObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); });
+}, { threshold:.05, rootMargin:'0px 0px -20px 0px' });
+document.querySelectorAll('.hs-item').forEach((el,i) => {
+  el.style.transitionDelay = (i%2)*0.08+'s';
+  itemObs.observe(el);
+});
+
+// ─────────────────────────────────────────────
+// MAIN FILTER
+// ─────────────────────────────────────────────
+const ftabs    = document.querySelectorAll('.ftab');
+const sections = document.querySelectorAll('[data-section]');
+ftabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    ftabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.filter;
+    sections.forEach(s => { s.style.display = (f==='all'||s.dataset.section===f) ? '' : 'none'; });
+    if (f==='all'||f==='hotspot') {
+      const a = document.querySelector('.sftab.active');
+      if (a) applySubFilter(a.dataset.sub);
+    }
+  });
+});
+
+// SUB-FILTER
+const sftabs = document.querySelectorAll('.sftab');
+function applySubFilter(sub) {
+  document.querySelectorAll('.hs-item').forEach(item => {
+    item.classList.toggle('hs-hidden', sub!=='all' && item.dataset.sub!==sub);
+  });
+}
+sftabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    sftabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    applySubFilter(tab.dataset.sub);
+  });
+});
+
+// ─────────────────────────────────────────────
+// TOAST HELPER
+// ─────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, isError=false) {
+  const toast = document.getElementById('evToast');
+  const icon  = document.getElementById('toastIcon');
+  document.getElementById('toastMsg').textContent = msg;
+  icon.textContent = isError ? '✕' : '✓';
+  toast.classList.toggle('toast-error', isError);
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ─────────────────────────────────────────────
+// RENDER EVENT CARD
+// ─────────────────────────────────────────────
+function renderEventCard(ev) {
+  return `
+    <div class="ev-item" data-ev-id="${ev.id}">
+      <div class="ev-date-block">
+        <div class="ev-day">${ev.day}</div>
+        <div class="ev-mon">${ev.month}</div>
+      </div>
+      <div class="ev-info">
+        <div class="ev-cat">${ev.category}</div>
+        <div class="ev-name">${ev.name}</div>
+        <div class="ev-meta">
+          <span class="ev-meta-item">📍 ${ev.location}</span>
+          <span class="ev-meta-item">🕖 ${ev.time}</span>
+          <span class="ev-meta-item">${ev.duration}</span>
+        </div>
+      </div>
+      <div class="ev-right">
+        <div>
+          <div class="ev-price">${ev.price}</div>
+          <div class="ev-price-sub">${ev.price_sub || ''}</div>
+        </div>
+        <button class="ev-btn">${ev.btn_label}</button>
+        <!-- admin controls — hidden for non-admins via CSS -->
+        <div class="ev-item-admin">
+          <button class="ev-edit-btn" onclick="openEditModal(${ev.id})">✏️ Edit</button>
+          <button class="ev-del-btn"  onclick="openDeleteConfirm(${ev.id}, '${ev.name.replace(/'/g,"\\'")}')">🗑️</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ─────────────────────────────────────────────
+// LOAD EVENTS
+// ─────────────────────────────────────────────
+let eventsCache = []; // keep a local copy for edit pre-fill
+
+async function loadEvents() {
+  try {
+    const res    = await fetch(API);
+    const events = await res.json();
+    eventsCache  = events;
+
+    const list = document.getElementById('evList');
+    if (!list) return;
+
+    if (!events.length) {
+      list.innerHTML = '<div style="color:var(--muted-h);font-size:.8rem;padding:2rem 0;opacity:.5;">No events yet.</div>';
+      return;
+    }
+
+    list.innerHTML = events.map(renderEventCard).join('');
+
+    // Update stats
+    const n = events.length;
+    const evStat = document.getElementById('evStatCount');
+    const evTab  = document.getElementById('evTabCount');
+    if (evStat) evStat.textContent = n;
+    if (evTab)  evTab.textContent  = n + ' upcoming';
+
+    // Update ticker from DB
+    const ticker = document.getElementById('tickerInner');
+    if (ticker && events.length) {
+      const items = [...events, ...events].map(ev =>
+        `<span class="ev-ticker-item">${ev.category} ${ev.name} <span>${ev.day} ${ev.month} · ${ev.location}</span></span><span class="ev-ticker-dot"></span>`
+      ).join('');
+      ticker.innerHTML = items;
+    }
+  } catch(e) {
+    console.warn('Could not load events:', e);
+    const list = document.getElementById('evList');
+    if (list) list.innerHTML = '<div style="color:#d07070;font-size:.8rem;padding:2rem 0;opacity:.7;">Could not load events. Is XAMPP running?</div>';
+  }
+}
+loadEvents();
+
+// ─────────────────────────────────────────────
+// MODAL LOGIC
+// ─────────────────────────────────────────────
+const backdrop   = document.getElementById('evModalBackdrop');
+const modalTitle = document.getElementById('modalTitle');
+const saveBtnEl  = document.getElementById('modalSave');
+const saveBtnTxt = document.getElementById('saveBtnText');
+
+function openModal() { backdrop.classList.add('open'); }
+function closeModal() {
+  backdrop.classList.remove('open');
+  clearModalErrors();
+}
+
+document.getElementById('modalClose').onclick  = closeModal;
+document.getElementById('modalCancel').onclick = closeModal;
+backdrop.addEventListener('click', e => { if(e.target === backdrop) closeModal(); });
+
+// ADD
+document.getElementById('addEvBtn').onclick = () => {
+  document.getElementById('mfId').value       = '0';
+  document.getElementById('mfDay').value      = '';
+  document.getElementById('mfMonth').value    = '';
+  document.getElementById('mfCat').value      = '';
+  document.getElementById('mfName').value     = '';
+  document.getElementById('mfLoc').value      = '';
+  document.getElementById('mfTime').value     = '';
+  document.getElementById('mfDuration').value = '';
+  document.getElementById('mfPrice').value    = '';
+  document.getElementById('mfPriceSub').value = '';
+  document.getElementById('mfBtn').value      = 'Book Tickets';
+  modalTitle.innerHTML = 'Add <span>Event</span>';
+  saveBtnTxt.textContent = 'Save Event';
+  openModal();
+};
+
+// EDIT — pre-fill from cache
+function openEditModal(id) {
+  const ev = eventsCache.find(e => e.id == id);
+  if (!ev) return;
+  document.getElementById('mfId').value       = ev.id;
+  document.getElementById('mfDay').value      = ev.day;
+  document.getElementById('mfMonth').value    = ev.month;
+  document.getElementById('mfCat').value      = ev.category;
+  document.getElementById('mfName').value     = ev.name;
+  document.getElementById('mfLoc').value      = ev.location;
+  document.getElementById('mfTime').value     = ev.time;
+  document.getElementById('mfDuration').value = ev.duration;
+  document.getElementById('mfPrice').value    = ev.price;
+  document.getElementById('mfPriceSub').value = ev.price_sub || '';
+  document.getElementById('mfBtn').value      = ev.btn_label || 'Book Tickets';
+  modalTitle.innerHTML = 'Edit <span>Event</span>';
+  saveBtnTxt.textContent = 'Update Event';
+  openModal();
+}
+
+// VALIDATION
+const required = [
+  ['mfDay','errDay'], ['mfMonth','errMonth'], ['mfCat','errCat'],
+  ['mfName','errName'], ['mfLoc','errLoc'], ['mfTime','errTime'], ['mfDuration','errDuration'],
+  ['mfPrice','errPrice']
+];
+function clearModalErrors() {
+  required.forEach(([,errId]) => {
+    const el = document.getElementById(errId);
+    if (el) el.classList.remove('show');
+  });
+}
+function validateModal() {
+  let ok = true;
+  required.forEach(([fieldId, errId]) => {
+    const val = document.getElementById(fieldId).value.trim();
+    const err = document.getElementById(errId);
+    if (!val) { err.classList.add('show'); ok = false; }
+    else        err.classList.remove('show');
+  });
+  return ok;
+}
+
+// SAVE (add or update)
+saveBtnEl.onclick = async () => {
+  if (!validateModal()) return;
+  saveBtnEl.classList.add('loading');
+  saveBtnEl.disabled = true;
+
+  const payload = {
+    id:        parseInt(document.getElementById('mfId').value),
+    day:       document.getElementById('mfDay').value.trim(),
+    month:     document.getElementById('mfMonth').value.trim(),
+    category:  document.getElementById('mfCat').value.trim(),
+    name:      document.getElementById('mfName').value.trim(),
+    location:  document.getElementById('mfLoc').value.trim(),
+    time:      document.getElementById('mfTime').value.trim(),
+    duration:  document.getElementById('mfDuration').value.trim(),
+    price:     document.getElementById('mfPrice').value.trim(),
+    price_sub: document.getElementById('mfPriceSub').value.trim(),
+    btn_label: document.getElementById('mfBtn').value,
+  };
+
+  try {
+    const res  = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.success) {
+      closeModal();
+      await loadEvents();
+      showToast(payload.id > 0 ? 'Event updated!' : 'Event added!');
+    } else {
+      showToast('Something went wrong.', true);
+    }
+  } catch(e) {
+    showToast('Server error — is XAMPP running?', true);
+  } finally {
+    saveBtnEl.classList.remove('loading');
+    saveBtnEl.disabled = false;
+  }
+};
+
+// ─────────────────────────────────────────────
+// DELETE CONFIRM
+// ─────────────────────────────────────────────
+let pendingDeleteId = null;
+const confirmBox = document.getElementById('evConfirm');
+
+function openDeleteConfirm(id, name) {
+  pendingDeleteId = id;
+  document.getElementById('confirmMsg').textContent = `"${name}" will be permanently removed.`;
+  confirmBox.classList.add('open');
+}
+
+document.getElementById('confirmCancel').onclick = () => {
+  confirmBox.classList.remove('open');
+  pendingDeleteId = null;
+};
+confirmBox.addEventListener('click', e => {
+  if (e.target === confirmBox) { confirmBox.classList.remove('open'); pendingDeleteId = null; }
+});
+
+document.getElementById('confirmDel').onclick = async () => {
+  if (!pendingDeleteId) return;
+  const btn = document.getElementById('confirmDel');
+  btn.textContent = 'Deleting…';
+  btn.disabled = true;
+  try {
+    const res  = await fetch(API, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: pendingDeleteId })
+    });
+    const data = await res.json();
+    if (data.success) {
+      confirmBox.classList.remove('open');
+      pendingDeleteId = null;
+      await loadEvents();
+      showToast('Event deleted.');
+    } else {
+      showToast('Delete failed.', true);
+    }
+  } catch(e) {
+    showToast('Server error.', true);
+  } finally {
+    btn.textContent = 'Yes, delete';
+    btn.disabled = false;
+  }
+};
+</script>
+</body>
+</html>
